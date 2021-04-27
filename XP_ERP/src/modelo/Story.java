@@ -1,5 +1,7 @@
 package modelo;
 
+import excepciones.MyException;
+
 /*EQUIPO B*/
 public class Story {
 
@@ -11,7 +13,7 @@ public class Story {
     private int horasFinales;
     private String contenido;
     
-    public Story(String titulo, int horasEstimadas, String contenido) {
+    public Story(String titulo, int horasEstimadas, String contenido) throws MyException {
         setTitulo(titulo);
         setHorasEstimadas(horasEstimadas);
         setContenido(contenido);
@@ -21,7 +23,10 @@ public class Story {
         return titulo;
     }
 
-    public void setTitulo(String titulo) {
+    public void setTitulo(String titulo) throws MyException {
+        if (titulo == null || titulo.equals("")) {
+            throw new MyException("El título no puedo quedar vacío");
+        }
         this.titulo = titulo;
     }
 
@@ -29,7 +34,10 @@ public class Story {
         return idStory;
     }
 
-    public void setIdStory(int idStory) {
+    public void setIdStory(int idStory) throws MyException {
+        if (idStory < 0) {
+            throw new MyException("El id del Story no puede ser negativo");
+        }
         this.idStory = idStory;
     }
 
@@ -50,7 +58,10 @@ public class Story {
         return horasEstimadas;
     }
 
-    public void setHorasEstimadas(int horasEstimadas) {
+    public void setHorasEstimadas(int horasEstimadas) throws MyException {
+        if (horasEstimadas < 0) {
+            throw new MyException("Las horas estimadas no puede ser negativo");
+        }
         this.horasEstimadas = horasEstimadas;
     }
 
@@ -58,7 +69,10 @@ public class Story {
         return horasFinales;
     }
 
-    public void setHorasFinales(int horasFinales) {
+    public void setHorasFinales(int horasFinales) throws MyException {
+        if (horasFinales < 0) {
+            throw new MyException("Las horas finales no puede ser negativo");
+        }
         this.horasFinales = horasFinales;
     }
 
@@ -66,7 +80,10 @@ public class Story {
         return contenido;
     }
 
-    public void setContenido(String contenido) {
+    public void setContenido(String contenido) throws MyException {
+        if (contenido == null || contenido.equals("")) {
+            throw new MyException("El contenido no puedo quedar vacío");
+        }
         this.contenido = contenido;
     }
 
