@@ -1,14 +1,25 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package gestoras;
 
-/**
- *
- * @author ryano
- */
+import java.util.HashSet;
+import modelo.Proyecto;
+
+/*EQUIPO B*/
 public class GestoraProyecto {
+    
+    private static HashSet<Proyecto> listaProyectos;
+    
+    public static void inicializa(){
+        listaProyectos = new HashSet<>();
+    }
+    
+    public static boolean addProyecto(Proyecto p) {
+        return listaProyectos.add(p);
+    }
+
+    public static HashSet<Proyecto> getListaProyectos() {
+        return listaProyectos;
+    }
+    
+    
     
 }
