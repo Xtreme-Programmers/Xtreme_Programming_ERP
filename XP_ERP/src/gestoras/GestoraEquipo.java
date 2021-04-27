@@ -1,7 +1,7 @@
 /*
  *Clase Gestora
  */
-package gestora;
+package gestoras;
 
 import java.util.HashSet;
 import java.util.Iterator;
