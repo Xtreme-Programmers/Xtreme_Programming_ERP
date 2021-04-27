@@ -37,8 +37,9 @@ public class Story {
         return miembroA;
     }
 
-    public void setMiembroA(MiembroEquipo miembroA, MiembroEquipo miembroB) {
+    public void setMiembroEquipo(MiembroEquipo miembroA, MiembroEquipo miembroB) {
         this.miembroA = miembroA;
+        this.miembroB = miembroB;
     }
 
     public MiembroEquipo getMiembroB() {
