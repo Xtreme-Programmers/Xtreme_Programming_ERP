@@ -12,6 +12,7 @@ public class Story {
     private int horasEstimadas;
     private int horasFinales;
     private String contenido;
+    private Fecha fechaInicio;
     
     public Story(String titulo, int horasEstimadas, String contenido) throws MyException {
         setTitulo(titulo);
@@ -85,6 +86,10 @@ public class Story {
             throw new MyException("El contenido no puedo quedar vacío");
         }
         this.contenido = contenido;
+    }
+
+    public void setFechaInicio(Fecha fechaInicio) {
+        this.fechaInicio = fechaInicio;
     }
 
     @Override
