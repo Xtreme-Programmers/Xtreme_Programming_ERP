@@ -1,6 +1,6 @@
 package modelo;
 
-import MyException.MyException;
+import excepciones.MyException;
 import java.util.HashSet;
 import java.util.Objects;
 
