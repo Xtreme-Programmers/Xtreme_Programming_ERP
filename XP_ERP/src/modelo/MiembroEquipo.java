@@ -1,5 +1,5 @@
 package modelo;
-
+/*EQUIPO C*/
 import excepciones.MyException;
 import java.util.HashSet;
 import java.util.Objects;

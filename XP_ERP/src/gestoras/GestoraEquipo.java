@@ -2,15 +2,10 @@
  *Clase Gestora
  */
 package gestoras;
-
 import java.util.HashSet;
 import java.util.Iterator;
 import modelo.MiembroEquipo;
-
-/**
- *
- * @author danie
- */
+/*EQUIPO C*/
 public class GestoraEquipo {
 
     private static HashSet<MiembroEquipo> listadoMiembros = new HashSet<>();

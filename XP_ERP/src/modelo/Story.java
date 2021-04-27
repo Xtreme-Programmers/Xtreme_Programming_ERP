@@ -1,7 +1,5 @@
 package modelo;
-
 import excepciones.MyException;
-
 /*EQUIPO B*/
 public class Story {
 
