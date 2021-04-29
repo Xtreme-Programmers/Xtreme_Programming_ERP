@@ -19,6 +19,10 @@ public class GestoraProyecto {
     public static HashSet<Proyecto> getListaProyectos() {
         return listaProyectos;
     }
+
+    public static int getNumProyectos() {
+        return listaProyectos.size();
+    }
     
     
     
