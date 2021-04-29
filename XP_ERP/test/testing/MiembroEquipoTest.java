@@ -58,7 +58,7 @@ public class MiembroEquipoTest {
     @Test
     public void testSetIdMiembro() throws Exception {
         System.out.println("setIdMiembro");
-        String idMiembro = "";
+        String idMiembro = "1111";
         MiembroEquipo instance = new MiembroEquipo();
         instance.setIdMiembro(idMiembro);
         fail("¡¡¡Los datos que se querían establecer no se añadieron!!!");
@@ -84,7 +84,7 @@ public class MiembroEquipoTest {
     @Test
     public void testSetPass() throws Exception {
         System.out.println("setPass");
-        String pass = "";
+        String pass = "1234";
         MiembroEquipo instance = new MiembroEquipo();
         instance.setPass(pass);
         fail("¡¡¡Los datos que se querían establecer no se añadieron!!!");

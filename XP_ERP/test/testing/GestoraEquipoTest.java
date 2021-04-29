@@ -45,7 +45,7 @@ public class GestoraEquipoTest {
     @Test
     public void testAddMiembro() {
         System.out.println("addMiembro");
-        MiembroEquipo mE = null;
+        MiembroEquipo mE = new MiembroEquipo();
         boolean expResult = false;
         boolean result = GestoraEquipo.addMiembro(mE);
         assertEquals(expResult, result);
@@ -58,7 +58,7 @@ public class GestoraEquipoTest {
     @Test
     public void testBorrarMiembroCodigo() {
         System.out.println("borrarMiembroCodigo");
-        String codigo = "";
+        String codigo = "1235";
         boolean expResult = false;
         boolean result = GestoraEquipo.borrarMiembroCodigo(codigo);
         assertEquals(expResult, result);
