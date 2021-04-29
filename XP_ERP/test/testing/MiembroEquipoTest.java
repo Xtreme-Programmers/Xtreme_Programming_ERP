@@ -6,8 +6,6 @@
 package testing;
 
 import excepciones.MyException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import modelo.MiembroEquipo;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -78,9 +76,8 @@ public class MiembroEquipoTest {
     @Test
     public void testGetPass() {
         System.out.println("getPass");
-        MiembroEquipo instance;
+
         try {
-            instance = new MiembroEquipo("1234", "1234");
             String expResult = "";
             String result = instance.getPass();
             assertEquals(expResult, result);
@@ -99,8 +96,8 @@ public class MiembroEquipoTest {
     @Test
     public void testSetPass() throws Exception {
         System.out.println("setPass");
-        String pass = "1234";
-        MiembroEquipo instance = new MiembroEquipo("1234", pass);
+        String pass = "33211";
+        MiembroEquipo instance = new MiembroEquipo();
         instance.setPass(pass);
         fail("¡¡¡Los datos que se querían establecer no se añadieron!!!");
     }
