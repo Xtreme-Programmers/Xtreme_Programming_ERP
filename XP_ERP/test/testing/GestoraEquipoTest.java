@@ -5,7 +5,10 @@
  */
 package testing;
 
+import excepciones.MyException;
 import gestoras.GestoraEquipo;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import modelo.MiembroEquipo;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -19,22 +22,22 @@ import static org.junit.Assert.*;
  * @author LopezSamuel
  */
 public class GestoraEquipoTest {
-    
+
     public GestoraEquipoTest() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
     }
-    
+
     @After
     public void tearDown() {
     }
@@ -45,11 +48,17 @@ public class GestoraEquipoTest {
     @Test
     public void testAddMiembro() {
         System.out.println("addMiembro");
-        MiembroEquipo mE = new MiembroEquipo();
-        boolean expResult = false;
-        boolean result = GestoraEquipo.addMiembro(mE);
-        assertEquals(expResult, result);
-        fail("¡¡¡El intento de añadir un miembro falló!!!");
+        MiembroEquipo mE;
+        try {
+            mE = new MiembroEquipo("1234", "1234");
+            boolean expResult = false;
+            boolean result = GestoraEquipo.addMiembro(mE);
+            assertEquals(expResult, result);
+
+        } catch (MyException ex) {
+            fail("¡¡¡El intento de añadir un miembro falló!!!");
+        }
+
     }
 
     /**
@@ -58,7 +67,7 @@ public class GestoraEquipoTest {
     @Test
     public void testBorrarMiembroCodigo() {
         System.out.println("borrarMiembroCodigo");
-        String codigo = "1235";
+        String codigo = "";
         boolean expResult = false;
         boolean result = GestoraEquipo.borrarMiembroCodigo(codigo);
         assertEquals(expResult, result);
@@ -78,5 +87,5 @@ public class GestoraEquipoTest {
         assertEquals(expResult, result);
         fail("¡¡¡Los datos establecidos para añadir nuevo miembro no han sido aceptados!!!");
     }
-    
+
 }

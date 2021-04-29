@@ -2,9 +2,11 @@
  *Clase Gestora
  */
 package gestoras;
+
 import java.util.HashSet;
 import java.util.Iterator;
 import modelo.MiembroEquipo;
+
 /*EQUIPO C*/
 public class GestoraEquipo {
 
@@ -23,6 +25,7 @@ public class GestoraEquipo {
         Iterator it = listadoMiembros.iterator();
         while (it.hasNext()) {
             MiembroEquipo next = (MiembroEquipo) it.next();
+            System.out.println(next.toString());
             if (next.getIdMiembro().equalsIgnoreCase(codigo)) {
                 return listadoMiembros.remove(next);
             }

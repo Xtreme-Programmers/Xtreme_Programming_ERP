@@ -5,6 +5,9 @@
  */
 package testing;
 
+import excepciones.MyException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import modelo.MiembroEquipo;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -18,22 +21,26 @@ import static org.junit.Assert.*;
  * @author LopezSamuel
  */
 public class MiembroEquipoTest {
-    
-    public MiembroEquipoTest() {
+
+    private MiembroEquipo instance;
+
+    public MiembroEquipoTest() throws MyException {
+        instance = new MiembroEquipo("1234", "1234");
+        gestoras.GestoraEquipo.addMiembro(instance);
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
     }
-    
+
     @After
     public void tearDown() {
     }
@@ -44,22 +51,23 @@ public class MiembroEquipoTest {
     @Test
     public void testGetIdMiembro() {
         System.out.println("getIdMiembro");
-        MiembroEquipo instance = new MiembroEquipo();
         String expResult = "";
         String result = instance.getIdMiembro();
         assertEquals(expResult, result);
         fail("¡¡¡No se obtuvieron datos del tipo deseado!!!");
+
     }
 
     /**
      * Test of setIdMiembro method, of class MiembroEquipo.
+     *
      * @throws java.lang.Exception
      */
     @Test
     public void testSetIdMiembro() throws Exception {
         System.out.println("setIdMiembro");
-        String idMiembro = "1111";
-        MiembroEquipo instance = new MiembroEquipo();
+        String idMiembro = "";
+        MiembroEquipo instance = new MiembroEquipo("1234", "1234");
         instance.setIdMiembro(idMiembro);
         fail("¡¡¡Los datos que se querían establecer no se añadieron!!!");
     }
@@ -70,22 +78,29 @@ public class MiembroEquipoTest {
     @Test
     public void testGetPass() {
         System.out.println("getPass");
-        MiembroEquipo instance = new MiembroEquipo();
-        String expResult = "";
-        String result = instance.getPass();
-        assertEquals(expResult, result);
-        fail("¡¡¡No se obtuvieron datos del tipo deseado!!!");
+        MiembroEquipo instance;
+        try {
+            instance = new MiembroEquipo("1234", "1234");
+            String expResult = "";
+            String result = instance.getPass();
+            assertEquals(expResult, result);
+            fail("¡¡¡No se obtuvieron datos del tipo deseado!!!");
+        } catch (MyException ex) {
+            System.out.println(ex.getMessage());
+        }
+
     }
 
     /**
      * Test of setPass method, of class MiembroEquipo.
+     *
      * @throws java.lang.Exception
      */
     @Test
     public void testSetPass() throws Exception {
         System.out.println("setPass");
         String pass = "1234";
-        MiembroEquipo instance = new MiembroEquipo();
+        MiembroEquipo instance = new MiembroEquipo("1234", pass);
         instance.setPass(pass);
         fail("¡¡¡Los datos que se querían establecer no se añadieron!!!");
     }
@@ -119,6 +134,7 @@ public class MiembroEquipoTest {
 
     /**
      * Test of setRol method, of class MiembroEquipo.
+     *
      * @throws java.lang.Exception
      */
     @Test
@@ -152,7 +168,7 @@ public class MiembroEquipoTest {
     public void testEliminarRol() {
         System.out.println("eliminarRol");
         String codigo = "";
-        MiembroEquipo instance = new MiembroEquipo();
+        MiembroEquipo instance = new MiembroEquipo(codigo, "1234");
         boolean expResult = false;
         boolean result = instance.eliminarRol(codigo);
         assertEquals(expResult, result);
@@ -185,5 +201,5 @@ public class MiembroEquipoTest {
         assertEquals(expResult, result);
         fail("¡¡¡No se encontró ningún elemento coincidente!!!");
     }
-    
+
 }

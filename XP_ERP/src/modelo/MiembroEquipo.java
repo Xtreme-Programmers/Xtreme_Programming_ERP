@@ -12,6 +12,13 @@ public class MiembroEquipo {
     private String pass;
     private static HashSet<String> rolesMiembros = new HashSet<>();
 
+    public MiembroEquipo(String idMiembro, String pass) throws MyException {
+        setIdMiembro(idMiembro);
+        setPass(pass);
+    }
+
+    
+    
     // Getters & Setters
     public String getIdMiembro() {
         return idMiembro;
