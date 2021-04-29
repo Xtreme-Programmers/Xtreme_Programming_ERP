@@ -7,8 +7,11 @@ package interfaz;
 
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.util.HashSet;
 import javax.swing.table.DefaultTableModel;
+import modelo.MiembroEquipo;
 import modelo.Proyecto;
+import modelo.Story;
 
 /**
  *
@@ -18,6 +21,7 @@ public class VentanaVerStories extends javax.swing.JFrame implements WindowListe
 
     private VentanaVerProyectos VENTANA_PROYECTOS;
     private DefaultTableModel modeloTablaStories;
+    private Proyecto p;
     /**
      * Creates new form VentanaVerStories
      */
@@ -25,6 +29,7 @@ public class VentanaVerStories extends javax.swing.JFrame implements WindowListe
         this.addWindowListener(this);
         initComponents();
         this.VENTANA_PROYECTOS = v;
+        this.p = p;
         modeloTablaStories = (DefaultTableModel) tablaStories.getModel();
         rellenaTabla();
     }
@@ -343,6 +348,34 @@ public class VentanaVerStories extends javax.swing.JFrame implements WindowListe
     }
 
     private void rellenaTabla() {
-        
+        HashSet<Story> listaStories = p.getListaStories();
+        String filaTabla[] = new String[6];
+        for (Story s : listaStories) {
+            String horasFinales = s.getHorasFinales()+ "";
+            if (horasFinales.equals("0")) {
+                horasFinales = "Tarea en curso";
+            }
+            MiembroEquipo mEA = s.getMiembroA();
+            String nombreMiembroA;
+            if (mEA == null) {
+                nombreMiembroA = "Sin asignar";
+            } else {
+                nombreMiembroA = mEA.getIdMiembro();
+            }
+            MiembroEquipo mEB = s.getMiembroB();
+            String nombreMiembroB;
+            if (mEB == null) {
+                nombreMiembroB = "Sin asignar";
+            } else {
+                nombreMiembroB = mEB.getIdMiembro();
+            }
+            filaTabla[0] = s.getTitulo();
+            filaTabla[1] = s.getContenido();
+            filaTabla[2] = s.getHorasEstimadas() + "";
+            filaTabla[3] = horasFinales;
+            filaTabla[4] = nombreMiembroA;
+            filaTabla[5] = nombreMiembroB;
+            modeloTablaStories.addRow(filaTabla);
+        }
     }
 }

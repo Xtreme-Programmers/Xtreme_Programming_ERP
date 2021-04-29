@@ -80,6 +80,10 @@ public class Proyecto {
         return estadoProyecto;
     }
 
+    public HashSet<Story> getListaStories() {
+        return listaStories;
+    }
+
     @Override
     public String toString() {
         return "Proyecto{" + "idProyecto=" + idProyecto + ", nombreProyecto=" + nombreProyecto + ", descripcion=" + descripcion + ", listaStories=" + listaStories + ", ESTADOS=" + ESTADOS + ", estadoProyecto=" + estadoProyecto + '}';
