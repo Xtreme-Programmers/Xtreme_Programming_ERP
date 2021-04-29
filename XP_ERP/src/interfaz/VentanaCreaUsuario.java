@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package interfazgrafica;
+package interfaz;
 
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
@@ -183,14 +183,13 @@ public class VentanaCreaUsuario extends javax.swing.JFrame implements WindowList
 
     @Override
     public void windowClosing(WindowEvent we) {
-        this.dispose();
-        ventanaMain.setVisible(true);
+        volver();
+        
     }
 
     @Override
     public void windowClosed(WindowEvent we) {
-        this.dispose();
-        ventanaMain.setVisible(true);
+        volver();
     }
 
     @Override
@@ -207,5 +206,10 @@ public class VentanaCreaUsuario extends javax.swing.JFrame implements WindowList
 
     @Override
     public void windowDeactivated(WindowEvent we) {
+    }
+
+    private void volver() {
+        this.dispose();
+        ventanaMain.setVisible(true);
     }
 }

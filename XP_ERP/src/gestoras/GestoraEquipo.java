@@ -15,6 +15,10 @@ public class GestoraEquipo {
     public static boolean addMiembro(MiembroEquipo mE) {
         return listadoMiembros.add(mE);
     }
+    
+    public static void inicializa() {
+        listadoMiembros = new HashSet<>();
+    }
 
     /**
      *

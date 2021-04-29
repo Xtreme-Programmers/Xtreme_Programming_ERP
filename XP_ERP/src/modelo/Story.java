@@ -1,5 +1,6 @@
 package modelo;
 import excepciones.MyException;
+import java.util.Objects;
 /*EQUIPO B*/
 public class Story {
 
@@ -10,9 +11,14 @@ public class Story {
     private int horasEstimadas;
     private int horasFinales;
     private String contenido;
-    private Fecha fechaInicio;
     
     public Story(String titulo, int horasEstimadas, String contenido) throws MyException {
+        setTitulo(titulo);
+        setHorasEstimadas(horasEstimadas);
+        setContenido(contenido);
+    }
+    
+    public Story(String titulo, String horasEstimadas, String contenido) throws MyException {
         setTitulo(titulo);
         setHorasEstimadas(horasEstimadas);
         setContenido(contenido);
@@ -57,6 +63,17 @@ public class Story {
         return horasEstimadas;
     }
 
+    public void setHorasEstimadas(String horasEstimadas) throws MyException {
+        if (horasEstimadas == null || horasEstimadas.equals("")) {
+            throw new MyException("Las horas estimadas no contienen nada");
+        }
+        try {
+            
+        } catch (NumberFormatException e) {
+            throw new MyException("Las horas estimadas contienen caracteres no válidos");
+        }
+    }
+    
     public void setHorasEstimadas(int horasEstimadas) throws MyException {
         if (horasEstimadas < 0) {
             throw new MyException("Las horas estimadas no puede ser negativo");
@@ -86,14 +103,15 @@ public class Story {
         this.contenido = contenido;
     }
 
-    public void setFechaInicio(Fecha fechaInicio) {
-        this.fechaInicio = fechaInicio;
+    @Override
+    public String toString() {
+        return "Story{" + "titulo=" + titulo + ", idStory=" + idStory + ", miembroA=" + miembroA + ", miembroB=" + miembroB + ", horasEstimadas=" + horasEstimadas + ", horasFinales=" + horasFinales + ", contenido=" + contenido + '}';
     }
 
     @Override
     public int hashCode() {
         int hash = 3;
-        hash = 67 * hash + this.idStory;
+        hash = 61 * hash + Objects.hashCode(this.titulo);
         return hash;
     }
 
@@ -109,10 +127,12 @@ public class Story {
             return false;
         }
         final Story other = (Story) obj;
-        if (this.idStory != other.idStory) {
+        if (!Objects.equals(this.titulo, other.titulo)) {
             return false;
         }
         return true;
     }
+
+
     
 }

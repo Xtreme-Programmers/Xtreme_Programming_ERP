@@ -3,10 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package interfazgrafica;
+package interfaz;
 
+import excepciones.MyException;
+import gestoras.GestoraEquipo;
+import gestoras.GestoraProyecto;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import modelo.Proyecto;
+import modelo.Story;
 
 /**
  *
@@ -20,7 +27,10 @@ public class Main extends javax.swing.JFrame implements WindowListener{
     public Main() {
         this.addWindowListener(this);
         initComponents();
+        inicializa();
         estadoInicial();
+        estadoInicialPruebas();//BORRAR//Método para navegar a las otras ventanas sin loguearse que usaremos durante las pruebas
+        rellenaConDatos();
     }
 
     /**
@@ -147,6 +157,11 @@ public class Main extends javax.swing.JFrame implements WindowListener{
         });
 
         botonVerPro.setText("VER PROYECTO");
+        botonVerPro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonVerProActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout contenedorMenuLayout = new javax.swing.GroupLayout(contenedorMenu);
         contenedorMenu.setLayout(contenedorMenuLayout);
@@ -231,6 +246,12 @@ public class Main extends javax.swing.JFrame implements WindowListener{
         this.dispose();
     }//GEN-LAST:event_botonCrearProActionPerformed
 
+    private void botonVerProActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVerProActionPerformed
+        VentanaVerProyectos vvp = new VentanaVerProyectos(this);
+        vvp.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_botonVerProActionPerformed
+
     public void estadoInicial(){
         textoNombre.setEnabled(true);
         textoPassw.setEnabled(true);
@@ -311,12 +332,12 @@ public class Main extends javax.swing.JFrame implements WindowListener{
 
     @Override
     public void windowClosing(WindowEvent we) {
-        this.dispose();
+        fin();
     }
 
     @Override
     public void windowClosed(WindowEvent we) {
-        this.dispose();
+        fin();
     }
 
     @Override
@@ -333,5 +354,80 @@ public class Main extends javax.swing.JFrame implements WindowListener{
 
     @Override
     public void windowDeactivated(WindowEvent we) {
+    }
+
+    /**
+     * Método para navegar a las otras ventanas sin loguearse que usaremos durante las pruebas
+     * @deprecated 
+     */
+    private void estadoInicialPruebas() {
+        botonAlta.setEnabled(true);
+        botonCrearPro.setEnabled(true);
+        botonVerPro.setEnabled(true);
+    }
+
+    private void inicializa() {
+        GestoraProyecto.inicializa();
+        GestoraEquipo.inicializa();
+    }
+
+    private void fin() {
+        this.dispose();
+        System.exit(0);
+    }
+
+    private void rellenaConDatos() {
+        try {
+            Story s1 = new Story("Investigación previa", "3", "En un lugar de la Mancha, de cuyo nombre no quiero acordarme");
+            Story s2 = new Story("Clase Usuario", "2", "No ha mucho tiempo que vivía un hidalgo de los de lanza en astillero");
+            Story s3 = new Story("Reunión técnica con Cliente", "2", "Adarga antigua, rocín flaco y galgo corredor.");
+            Story s4 = new Story("Interfaz Main", "6", "Una olla de algo más vaca que carnero, salpicón las más noches");
+            Story s5 = new Story("Clase gestora", "4", "Duelos y quebrantos los sábados, lantejas los viernes");
+            Story s6 = new Story("Creación clases Junit", "1", "Algún palomino de añadidura los domingos, consumían las tres partes de su hacienda.");
+            Story s7 = new Story("Algorimos modelo", "4", "El resto della concluían sayo de velarte, calzas de velludo para las fiestas");
+            Story s8 = new Story("Conectar interfaz", "9", "Con sus pantuflos de lo mesmo, y los días de entresemana se honraba con su vellorí de lo más fino.");
+            Proyecto p1 = new Proyecto("Aplicación Tin-Tinder", "Es una app que le da mil vueltas a Tinder");
+            p1.aniadeStory(s1);
+            p1.aniadeStory(s2);
+            p1.aniadeStory(s3);
+            p1.aniadeStory(s4);
+            p1.aniadeStory(s5);
+            p1.aniadeStory(s6);
+            p1.aniadeStory(s7);
+            p1.aniadeStory(s8);
+            Proyecto p2 = new Proyecto("Web sobre gatitos", "Lo nuncavisto: una web de fotos de gatitos!");
+            p2.aniadeStory(s1);
+            p2.aniadeStory(s2);
+            p2.aniadeStory(s3);
+            p2.aniadeStory(s4);
+            p2.aniadeStory(s5);
+            p2.aniadeStory(s6);
+            p2.aniadeStory(s7);
+            p2.aniadeStory(s8);
+            Proyecto p3 = new Proyecto("Base de datos de patos", "Esta base de patos controla tus patos de datos");
+            p3.aniadeStory(s1);
+            p3.aniadeStory(s2);
+            p3.aniadeStory(s3);
+            p3.aniadeStory(s4);
+            p3.aniadeStory(s5);
+            p3.aniadeStory(s6);
+            p3.aniadeStory(s7);
+            p3.aniadeStory(s8);
+            Proyecto p4 = new Proyecto("¿Por que la gente no aprende inglés", "Por que el ingles se enseña mal");
+            p4.aniadeStory(s1);
+            p4.aniadeStory(s2);
+            p4.aniadeStory(s3);
+            p4.aniadeStory(s4);
+            p4.aniadeStory(s5);
+            p4.aniadeStory(s6);
+            p4.aniadeStory(s7);
+            p4.aniadeStory(s8);
+            GestoraProyecto.addProyecto(p1);
+            GestoraProyecto.addProyecto(p2);
+            GestoraProyecto.addProyecto(p3);
+            GestoraProyecto.addProyecto(p4);
+        } catch (MyException ex) {
+            Consola.muestraMensaje(ex.getMessage());
+        }
     }
 }

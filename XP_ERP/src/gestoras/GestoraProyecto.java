@@ -15,6 +15,10 @@ public class GestoraProyecto {
     public static boolean addProyecto(Proyecto p) {
         return listaProyectos.add(p);
     }
+    
+    public static boolean borraProyecto(Proyecto p) {
+        return listaProyectos.remove(p);
+    }
 
     public static HashSet<Proyecto> getListaProyectos() {
         return listaProyectos;

@@ -13,20 +13,21 @@ public class Proyecto {
     private String nombreProyecto;
     private String descripcion;
     private HashSet<Story> listaStories;
-    private final String[] ESTADOS = {"borrador", "enCurso", "archivado"};
+    private final String[] ESTADOS = {"enCurso", "archivado"};
     private String estadoProyecto;
 
     public Proyecto(String nombreProyecto, String descripción) throws MyException {
+        listaStories = new HashSet<>();
         this.idProyecto = GestoraProyecto.getNumProyectos();
         setNombreProyecto(nombreProyecto);
         setDescripcion(descripción);
-        setEstadoProyecto("borrador");
+        setEstadoProyecto("enCurso");
     }
     
     public void aniadeStory(Story s) throws MyException {
         if (s != null) {
-            if (!listaStories.add(s)) {
-                throw new MyException("No se ha añadido la Story");
+            if (listaStories.add(s)) {
+                System.out.println(s.toString());
             }
         } else {
             throw new MyException("La Story es null");
@@ -47,8 +48,19 @@ public class Proyecto {
         this.descripcion = descripcion;
     }
 
-    public void setEstadoProyecto(String estadoProyecto) {
+    public void setEstadoProyecto(String estadoProyecto) throws MyException {
+        if (estadoProyecto == null || estadoProyecto.equals(null)) {
+            throw new MyException("El estado de proyecto está vacío");
+        } 
+        boolean esValido = false;
+        for (int i = 0; i < ESTADOS.length; i++) {
+            if (estadoProyecto.equals(ESTADOS[i])) {
+                esValido = true;
+            }
+        }
+        if (!esValido) {
+            throw new MyException("El estado de proyecto no es válido");
+        }
         this.estadoProyecto = estadoProyecto;
     }
-    
 }
