@@ -236,20 +236,20 @@ public class Main extends javax.swing.JFrame implements WindowListener{
         // TODO add your handling code here:
         VentanaCreaUsuario vcu = new VentanaCreaUsuario(this);
         vcu.setVisible(true);
-        this.dispose();
+        this.setVisible(false);
     }//GEN-LAST:event_botonAltaActionPerformed
 
     private void botonCrearProActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCrearProActionPerformed
         // TODO add your handling code here:
         VentanaCreaProyecto vcp = new VentanaCreaProyecto(this);
         vcp.setVisible(true);
-        this.dispose();
+        this.setVisible(false);
     }//GEN-LAST:event_botonCrearProActionPerformed
 
     private void botonVerProActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVerProActionPerformed
         VentanaVerProyectos vvp = new VentanaVerProyectos(this);
         vvp.setVisible(true);
-        this.dispose();
+        this.setVisible(false);
     }//GEN-LAST:event_botonVerProActionPerformed
 
     public void estadoInicial(){
@@ -387,6 +387,7 @@ public class Main extends javax.swing.JFrame implements WindowListener{
             Story s7 = new Story("Algorimos modelo", "4", "El resto della concluían sayo de velarte, calzas de velludo para las fiestas");
             Story s8 = new Story("Conectar interfaz", "9", "Con sus pantuflos de lo mesmo, y los días de entresemana se honraba con su vellorí de lo más fino.");
             Proyecto p1 = new Proyecto("Aplicación Tin-Tinder", "Es una app que le da mil vueltas a Tinder");
+            p1.setEstadoProyecto("enCurso");
             p1.aniadeStory(s1);
             p1.aniadeStory(s2);
             p1.aniadeStory(s3);
@@ -395,7 +396,9 @@ public class Main extends javax.swing.JFrame implements WindowListener{
             p1.aniadeStory(s6);
             p1.aniadeStory(s7);
             p1.aniadeStory(s8);
+            GestoraProyecto.addProyecto(p1);
             Proyecto p2 = new Proyecto("Web sobre gatitos", "Lo nuncavisto: una web de fotos de gatitos!");
+            p2.setEstadoProyecto("enCurso");
             p2.aniadeStory(s1);
             p2.aniadeStory(s2);
             p2.aniadeStory(s3);
@@ -404,7 +407,9 @@ public class Main extends javax.swing.JFrame implements WindowListener{
             p2.aniadeStory(s6);
             p2.aniadeStory(s7);
             p2.aniadeStory(s8);
+            GestoraProyecto.addProyecto(p2);
             Proyecto p3 = new Proyecto("Base de datos de patos", "Esta base de patos controla tus patos de datos");
+            p3.setEstadoProyecto("archivado");
             p3.aniadeStory(s1);
             p3.aniadeStory(s2);
             p3.aniadeStory(s3);
@@ -413,7 +418,9 @@ public class Main extends javax.swing.JFrame implements WindowListener{
             p3.aniadeStory(s6);
             p3.aniadeStory(s7);
             p3.aniadeStory(s8);
+            GestoraProyecto.addProyecto(p3);
             Proyecto p4 = new Proyecto("¿Por que la gente no aprende inglés", "Por que el ingles se enseña mal");
+            p4.setEstadoProyecto("archivado");
             p4.aniadeStory(s1);
             p4.aniadeStory(s2);
             p4.aniadeStory(s3);
@@ -422,9 +429,6 @@ public class Main extends javax.swing.JFrame implements WindowListener{
             p4.aniadeStory(s6);
             p4.aniadeStory(s7);
             p4.aniadeStory(s8);
-            GestoraProyecto.addProyecto(p1);
-            GestoraProyecto.addProyecto(p2);
-            GestoraProyecto.addProyecto(p3);
             GestoraProyecto.addProyecto(p4);
         } catch (MyException ex) {
             Consola.muestraMensaje(ex.getMessage());

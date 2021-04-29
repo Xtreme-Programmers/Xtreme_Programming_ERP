@@ -7,6 +7,7 @@ package interfaz;
 
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import javax.swing.table.DefaultTableModel;
 import modelo.Proyecto;
 
 /**
@@ -16,12 +17,16 @@ import modelo.Proyecto;
 public class VentanaVerStories extends javax.swing.JFrame implements WindowListener{
 
     private VentanaVerProyectos VENTANA_PROYECTOS;
+    private DefaultTableModel modeloTablaStories;
     /**
      * Creates new form VentanaVerStories
      */
     public VentanaVerStories(VentanaVerProyectos v, Proyecto p) {
+        this.addWindowListener(this);
         initComponents();
         this.VENTANA_PROYECTOS = v;
+        modeloTablaStories = (DefaultTableModel) tablaStories.getModel();
+        rellenaTabla();
     }
 
     /**
@@ -37,7 +42,7 @@ public class VentanaVerStories extends javax.swing.JFrame implements WindowListe
         jLabel3 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tablaStories = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
         comboMiembroA = new javax.swing.JComboBox<>();
         comboMienbroB = new javax.swing.JComboBox<>();
@@ -57,7 +62,7 @@ public class VentanaVerStories extends javax.swing.JFrame implements WindowListe
         botonModificaStory = new javax.swing.JButton();
         botonVolver = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
         jLabel3.setText("Nomnbre de Proyecto");
 
@@ -78,7 +83,7 @@ public class VentanaVerStories extends javax.swing.JFrame implements WindowListe
                 .addContainerGap(26, Short.MAX_VALUE))
         );
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tablaStories.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -94,7 +99,7 @@ public class VentanaVerStories extends javax.swing.JFrame implements WindowListe
                 return types [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tablaStories);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -273,7 +278,7 @@ public class VentanaVerStories extends javax.swing.JFrame implements WindowListe
     }//GEN-LAST:event_botonConfirmaStoryActionPerformed
 
     private void botonVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVolverActionPerformed
-        // TODO add your handling code here:
+        volver();
     }//GEN-LAST:event_botonVolverActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -299,7 +304,7 @@ public class VentanaVerStories extends javax.swing.JFrame implements WindowListe
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tablaStories;
     // End of variables declaration//GEN-END:variables
 
     @Override
@@ -335,5 +340,9 @@ public class VentanaVerStories extends javax.swing.JFrame implements WindowListe
     private void volver() {
         this.dispose();
         VENTANA_PROYECTOS.setVisible(true);
+    }
+
+    private void rellenaTabla() {
+        
     }
 }

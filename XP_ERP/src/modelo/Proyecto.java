@@ -26,8 +26,8 @@ public class Proyecto {
     
     public void aniadeStory(Story s) throws MyException {
         if (s != null) {
-            if (listaStories.add(s)) {
-                System.out.println(s.toString());
+            if (!listaStories.add(s)) {
+                throw new MyException("La Story con ese nombre ya existe en el proyecto");
             }
         } else {
             throw new MyException("La Story es null");
@@ -63,4 +63,28 @@ public class Proyecto {
         }
         this.estadoProyecto = estadoProyecto;
     }
+
+    public int getIdProyecto() {
+        return idProyecto;
+    }
+
+    public String getNombreProyecto() {
+        return nombreProyecto;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public String getEstadoProyecto() {
+        return estadoProyecto;
+    }
+
+    @Override
+    public String toString() {
+        return "Proyecto{" + "idProyecto=" + idProyecto + ", nombreProyecto=" + nombreProyecto + ", descripcion=" + descripcion + ", listaStories=" + listaStories + ", ESTADOS=" + ESTADOS + ", estadoProyecto=" + estadoProyecto + '}';
+    }
+    
+    
+    
 }

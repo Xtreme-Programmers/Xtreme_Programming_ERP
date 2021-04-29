@@ -5,22 +5,48 @@
  */
 package interfaz;
 
+import excepciones.MyException;
+import gestoras.GestoraProyecto;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.util.HashSet;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.ListSelectionModel;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+import javax.swing.table.DefaultTableModel;
+import modelo.Proyecto;
 
 /**
  *
  * @author ryano
  */
-public class VentanaVerProyectos extends javax.swing.JFrame implements WindowListener{
+public class VentanaVerProyectos extends javax.swing.JFrame implements WindowListener, ListSelectionListener{
 
     private final Main VENTANA_MAIN;
+    private DefaultTableModel modeloTablaEnCurso;
+    private DefaultTableModel modeloTablaArchivado;
     /**
      * Creates new form VentanaVerProyectos
      */
     public VentanaVerProyectos(Main v) {
+        this.addWindowListener(this);
         initComponents();
         this.VENTANA_MAIN = v;
+        modeloListenerTablas();
+        
+        rellenaTablas();
+    }
+
+    private void modeloListenerTablas() {
+        modeloTablaArchivado = (DefaultTableModel) tablaArchivados.getModel();
+        ListSelectionModel modeloSelectArchivados = tablaArchivados.getSelectionModel();
+        modeloSelectArchivados.addListSelectionListener(this);
+
+        modeloTablaEnCurso = (DefaultTableModel) tablaEnCurso.getModel();
+        ListSelectionModel modeloSelectEnCurso = tablaEnCurso.getSelectionModel();
+        modeloSelectEnCurso.addListSelectionListener(this);
     }
 
     VentanaVerProyectos() {
@@ -40,22 +66,24 @@ public class VentanaVerProyectos extends javax.swing.JFrame implements WindowLis
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
-        jPanel3 = new javax.swing.JPanel();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        tablaArchivados = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
+        botonEliminaProyectoArchivado = new javax.swing.JButton();
+        botonVerStoriesArchivados = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tablaEnCurso = new javax.swing.JTable();
         jLabel3 = new javax.swing.JLabel();
+        botonEliminaProyectoEnCurso = new javax.swing.JButton();
+        botonVerStoriesEnCurso = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         botonVolver = new javax.swing.JButton();
         botonNuevoProyecto = new javax.swing.JButton();
-        botonVerStories = new javax.swing.JButton();
-        botonEliminaProyecto = new javax.swing.JButton();
+        jPanel3 = new javax.swing.JPanel();
+        botonCambiaArchivado = new javax.swing.JButton();
+        botonCambiaEnCurso = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Vista de Proyectos");
@@ -65,7 +93,7 @@ public class VentanaVerProyectos extends javax.swing.JFrame implements WindowLis
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 706, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -76,92 +104,120 @@ public class VentanaVerProyectos extends javax.swing.JFrame implements WindowLis
                 .addContainerGap(25, Short.MAX_VALUE))
         );
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        tablaArchivados.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Id", "Nombre", "Descripcción"
             }
-        ));
-        jScrollPane2.setViewportView(jTable2);
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
 
-        jButton3.setText("<--");
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
 
-        jButton4.setText("-->");
-        jButton4.setToolTipText("");
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE)
-            .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(181, 181, 181)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(39, 39, 39)
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(148, Short.MAX_VALUE))
-        );
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(tablaArchivados);
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Proyectos Archivados");
+
+        botonEliminaProyectoArchivado.setText("Elimina Proyecto");
+        botonEliminaProyectoArchivado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonEliminaProyectoArchivadoActionPerformed(evt);
+            }
+        });
+
+        botonVerStoriesArchivados.setText("Ver Stories de Proyecto");
+        botonVerStoriesArchivados.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonVerStoriesArchivadosActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(botonEliminaProyectoArchivado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(botonVerStoriesArchivados, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 427, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(25, 25, 25)
+                .addGap(16, 16, 16)
                 .addComponent(jLabel2)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(botonVerStoriesArchivados)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(botonEliminaProyectoArchivado)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tablaEnCurso.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Id", "Nombre", "Descripcción"
             }
-        ));
-        jScrollPane1.setViewportView(jTable1);
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(tablaEnCurso);
 
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Proyectos en Curso");
+
+        botonEliminaProyectoEnCurso.setText("Elimina Proyecto");
+        botonEliminaProyectoEnCurso.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonEliminaProyectoEnCursoActionPerformed(evt);
+            }
+        });
+
+        botonVerStoriesEnCurso.setText("Ver Stories de Proyecto");
+        botonVerStoriesEnCurso.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonVerStoriesEnCursoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 290, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 438, Short.MAX_VALUE)
+                    .addComponent(botonEliminaProyectoEnCurso, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(botonVerStoriesEnCurso, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
@@ -170,8 +226,12 @@ public class VentanaVerProyectos extends javax.swing.JFrame implements WindowLis
                 .addContainerGap(19, Short.MAX_VALUE)
                 .addComponent(jLabel3)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 404, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(botonVerStoriesEnCurso)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(botonEliminaProyectoEnCurso)
+                .addGap(24, 24, 24))
         );
 
         botonVolver.setText("Volver");
@@ -183,30 +243,16 @@ public class VentanaVerProyectos extends javax.swing.JFrame implements WindowLis
 
         botonNuevoProyecto.setText("Nuevo Proyecto");
 
-        botonVerStories.setText("Ver Stories de Proyecto");
-        botonVerStories.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonVerStoriesActionPerformed(evt);
-            }
-        });
-
-        botonEliminaProyecto.setText("Elimina Proyecto");
-
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(botonVolver, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(botonNuevoProyecto, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(botonEliminaProyecto, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(botonVerStories, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(botonNuevoProyecto, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(botonVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(257, 257, 257))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -214,11 +260,40 @@ public class VentanaVerProyectos extends javax.swing.JFrame implements WindowLis
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botonNuevoProyecto)
-                    .addComponent(botonVerStories)
-                    .addComponent(botonEliminaProyecto))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(botonVolver)
-                .addContainerGap())
+                    .addComponent(botonVolver))
+                .addGap(51, 51, 51))
+        );
+
+        botonCambiaArchivado.setText("<--");
+        botonCambiaArchivado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonCambiaArchivadoActionPerformed(evt);
+            }
+        });
+
+        botonCambiaEnCurso.setText("-->");
+        botonCambiaEnCurso.setToolTipText("");
+        botonCambiaEnCurso.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonCambiaEnCursoActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(botonCambiaEnCurso, javax.swing.GroupLayout.DEFAULT_SIZE, 74, Short.MAX_VALUE)
+            .addComponent(botonCambiaArchivado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(181, 181, 181)
+                .addComponent(botonCambiaArchivado, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(35, 35, 35)
+                .addComponent(botonCambiaEnCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(148, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -226,14 +301,13 @@ public class VentanaVerProyectos extends javax.swing.JFrame implements WindowLis
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -242,9 +316,10 @@ public class VentanaVerProyectos extends javax.swing.JFrame implements WindowLis
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 454, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
@@ -254,17 +329,91 @@ public class VentanaVerProyectos extends javax.swing.JFrame implements WindowLis
          volver();
     }//GEN-LAST:event_botonVolverActionPerformed
 
-    private void botonVerStoriesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVerStoriesActionPerformed
-        //VentanaVerStories vvs = new VentanaVerStories(this, )
-    }//GEN-LAST:event_botonVerStoriesActionPerformed
+    private void botonVerStoriesEnCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVerStoriesEnCursoActionPerformed
+        Proyecto p = seleccionaEnCurso();
+        if (p != null) {
+            VentanaVerStories vvs = new VentanaVerStories(this, p);
+            vvs.setVisible(true);
+            this.setVisible(false);
+        }
+    }//GEN-LAST:event_botonVerStoriesEnCursoActionPerformed
+
+    private void botonCambiaArchivadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCambiaArchivadoActionPerformed
+        Proyecto p = seleccionaArchivado();
+        if (p != null) {
+            try {
+                p.setEstadoProyecto("enCurso");
+                limpiaTablas();
+                rellenaTablas();
+            } catch (MyException ex) {
+                Consola.muestraMensaje(ex.getMessage());
+            }
+        }
+    }//GEN-LAST:event_botonCambiaArchivadoActionPerformed
+
+    private void botonCambiaEnCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCambiaEnCursoActionPerformed
+        Proyecto p = seleccionaEnCurso();
+        if (p != null) {
+            try {
+                p.setEstadoProyecto("archivado");
+                limpiaTablas();
+                rellenaTablas();
+            } catch (MyException ex) {
+                Consola.muestraMensaje(ex.getMessage());
+            }
+        }
+    }//GEN-LAST:event_botonCambiaEnCursoActionPerformed
+
+    private void botonVerStoriesArchivadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVerStoriesArchivadosActionPerformed
+        Proyecto p = seleccionaArchivado();
+        if (p != null) {
+            VentanaVerStories vvs = new VentanaVerStories(this, p);
+            vvs.setVisible(true);
+            this.setVisible(false);
+        }
+    }//GEN-LAST:event_botonVerStoriesArchivadosActionPerformed
+
+    private void botonEliminaProyectoArchivadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminaProyectoArchivadoActionPerformed
+        Proyecto p = seleccionaArchivado();
+        if (p != null) {
+            if (Consola.pideOpcion("Seguro?") == 0) {
+                try {
+                    GestoraProyecto.eliminaProyecto(p);
+                } catch (MyException ex) {
+                    Consola.muestraMensaje(ex.getMessage());
+                }
+                Consola.muestraMensaje("Eliminado");
+                limpiaTablas();
+                rellenaTablas();
+            }
+        }
+    }//GEN-LAST:event_botonEliminaProyectoArchivadoActionPerformed
+
+    private void botonEliminaProyectoEnCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminaProyectoEnCursoActionPerformed
+        Proyecto p = seleccionaEnCurso();
+        if (p != null) {
+            if (Consola.pideOpcion("Seguro?") == 0) {
+                try {
+                    GestoraProyecto.eliminaProyecto(p);
+                } catch (MyException ex) {
+                    Consola.muestraMensaje(ex.getMessage());
+                }
+                Consola.muestraMensaje("Eliminado");
+                limpiaTablas();
+                rellenaTablas();
+            }
+        }
+    }//GEN-LAST:event_botonEliminaProyectoEnCursoActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton botonEliminaProyecto;
+    private javax.swing.JButton botonCambiaArchivado;
+    private javax.swing.JButton botonCambiaEnCurso;
+    private javax.swing.JButton botonEliminaProyectoArchivado;
+    private javax.swing.JButton botonEliminaProyectoEnCurso;
     private javax.swing.JButton botonNuevoProyecto;
-    private javax.swing.JButton botonVerStories;
+    private javax.swing.JButton botonVerStoriesArchivados;
+    private javax.swing.JButton botonVerStoriesEnCurso;
     private javax.swing.JButton botonVolver;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -275,8 +424,8 @@ public class VentanaVerProyectos extends javax.swing.JFrame implements WindowLis
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
+    private javax.swing.JTable tablaArchivados;
+    private javax.swing.JTable tablaEnCurso;
     // End of variables declaration//GEN-END:variables
 
     @Override
@@ -312,5 +461,56 @@ public class VentanaVerProyectos extends javax.swing.JFrame implements WindowLis
     private void volver() {
         this.dispose();
         VENTANA_MAIN.setVisible(true);
+    }
+
+    private void rellenaTablas() {
+        HashSet<Proyecto> listaProyectos = GestoraProyecto.getListaProyectos();
+        
+        String filaTabla[] = new String[3];
+        for (Proyecto p : listaProyectos) {
+            filaTabla[0] = p.getIdProyecto() + "";
+            filaTabla[1] = p.getNombreProyecto();
+            filaTabla[2] = p.getDescripcion();
+            if (p.getEstadoProyecto().equals("archivado")) {
+                modeloTablaArchivado.addRow(filaTabla);
+            } else if (p.getEstadoProyecto().equals("enCurso")) {
+                modeloTablaEnCurso.addRow(filaTabla);
+            }
+        }
+    }
+    
+    private void limpiaTablas() {
+        modeloTablaArchivado.setNumRows(0);
+        modeloTablaEnCurso.setNumRows(0);
+    }
+
+    @Override
+    public void valueChanged(ListSelectionEvent lse) {
+    }
+
+    private Proyecto seleccionaArchivado() {
+        try {
+            int fila = tablaArchivados.getSelectedRow();
+            String id = tablaArchivados.getValueAt(fila, 0) + "";
+            return GestoraProyecto.buscaProyecto(id);
+        } catch (MyException ex) {
+            Consola.muestraMensaje(ex.getMessage());
+        } catch (ArrayIndexOutOfBoundsException e) {
+            Consola.muestraMensaje("Selecciona un proyecto archivado ababol!");
+        }
+        return null;
+    }
+    
+    private Proyecto seleccionaEnCurso() {
+        try {
+            int fila = tablaEnCurso.getSelectedRow();
+            String id = tablaEnCurso.getValueAt(fila, 0) + "";
+            return GestoraProyecto.buscaProyecto(id);
+        } catch (MyException ex) {
+            Consola.muestraMensaje(ex.getMessage());
+        } catch (ArrayIndexOutOfBoundsException e) {
+            Consola.muestraMensaje("Selecciona un proyecto archivado ababol!");
+        }
+        return null;
     }
 }

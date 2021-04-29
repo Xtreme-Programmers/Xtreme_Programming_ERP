@@ -1,5 +1,6 @@
 package gestoras;
 
+import excepciones.MyException;
 import java.util.HashSet;
 import modelo.Proyecto;
 
@@ -26,6 +27,27 @@ public class GestoraProyecto {
 
     public static int getNumProyectos() {
         return listaProyectos.size();
+    }
+
+    public static Proyecto buscaProyecto(String idSt) throws MyException {
+        int id;
+        try {
+            id = Integer.parseInt(idSt);
+        } catch (NumberFormatException e) {
+            throw new MyException("No se ha seleccionado ningún proyecto");
+        }
+        for (Proyecto p : listaProyectos) {
+            if (p.getIdProyecto() == id) {
+                return p;
+            }
+        }
+        throw new MyException("No se ha encontrado ningún proyecto");
+    }
+
+    public static void eliminaProyecto(Proyecto p) throws MyException {
+        if (!listaProyectos.remove(p)) {
+            throw new MyException("No se ha encontrado ningún proyecto");
+        }
     }
     
     
