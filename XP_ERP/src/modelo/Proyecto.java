@@ -11,5 +11,6 @@ public class Proyecto {
     private String nombreProyecto;
     private String descripción;
     private HashSet<Story> listaStories;
+    
      
 }
