@@ -88,41 +88,25 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jSeparator1" max="32767" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                  </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Component id="etiquetaDuracion" min="-2" max="-2" attributes="0"/>
                           <Component id="botonVolver" min="-2" max="-2" attributes="0"/>
-                          <Component id="etiquetaRol" min="-2" max="-2" attributes="0"/>
                           <Component id="etiquetaNombre" min="-2" max="-2" attributes="0"/>
-                          <Component id="etiquetaEmpleado" min="-2" max="-2" attributes="0"/>
                       </Group>
+                      <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
-                              <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <Component id="textoNombre" max="32767" attributes="0"/>
-                                      <EmptySpace min="-2" pref="89" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" attributes="0">
-                                      <Component id="botonAlta" min="-2" pref="150" max="-2" attributes="0"/>
-                                      <EmptySpace pref="114" max="32767" attributes="0"/>
-                                  </Group>
-                              </Group>
+                              <Component id="botonAlta" min="-2" pref="150" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
                           </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="comboBoxRol" min="-2" max="-2" attributes="0"/>
-                                  <Component id="comboBoxEmpleado" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="textoDuracion" max="32767" attributes="0"/>
+                                  <Component id="textoNombre" pref="150" max="32767" attributes="0"/>
                               </Group>
-                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              <EmptySpace min="-2" pref="89" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -131,31 +115,22 @@
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="etiquetaNombre" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="textoNombre" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="jSeparator1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="etiquetaEmpleado" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="comboBoxEmpleado" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="etiquetaNombre" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="etiquetaRol" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="comboBoxRol" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="textoDuracion" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="etiquetaDuracion" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="etiquetaDuracion" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="78" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="botonVolver" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="botonAlta" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
+                      <EmptySpace pref="34" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -164,16 +139,6 @@
             <Component class="javax.swing.JLabel" name="etiquetaNombre">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Nombre del Proyecto:"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="etiquetaEmpleado">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Seleccione al empleado:"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="etiquetaRol">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Asigna el Rol:"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JButton" name="botonVolver">
@@ -191,39 +156,12 @@
             </Component>
             <Component class="javax.swing.JTextField" name="textoNombre">
             </Component>
-            <Component class="javax.swing.JSeparator" name="jSeparator1">
-              <Properties>
-                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                  <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-                    <LineBorder/>
-                  </Border>
-                </Property>
-              </Properties>
-            </Component>
             <Component class="javax.swing.JLabel" name="etiquetaDuracion">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Asigna la duraci&#xf3;n:"/>
+                <Property name="text" type="java.lang.String" value="Asigna la duraci&#xf3;n del Proyecto:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JComboBox" name="comboBoxEmpleado">
-              <Properties>
-                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="0"/>
-                </Property>
-              </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-              </AuxValues>
-            </Component>
-            <Component class="javax.swing.JComboBox" name="comboBoxRol">
-              <Properties>
-                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="0"/>
-                </Property>
-              </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-              </AuxValues>
+            <Component class="javax.swing.JTextField" name="textoDuracion">
             </Component>
           </SubComponents>
         </Container>

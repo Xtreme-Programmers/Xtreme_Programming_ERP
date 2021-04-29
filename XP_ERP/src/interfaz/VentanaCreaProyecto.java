@@ -37,15 +37,11 @@ public class VentanaCreaProyecto extends javax.swing.JFrame implements WindowLis
         etiquetaLogo = new javax.swing.JLabel();
         contenedorBotones = new javax.swing.JPanel();
         etiquetaNombre = new javax.swing.JLabel();
-        etiquetaEmpleado = new javax.swing.JLabel();
-        etiquetaRol = new javax.swing.JLabel();
         botonVolver = new javax.swing.JButton();
         botonAlta = new javax.swing.JButton();
         textoNombre = new javax.swing.JTextField();
-        jSeparator1 = new javax.swing.JSeparator();
         etiquetaDuracion = new javax.swing.JLabel();
-        comboBoxEmpleado = new javax.swing.JComboBox<>();
-        comboBoxRol = new javax.swing.JComboBox<>();
+        textoDuracion = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
@@ -70,10 +66,6 @@ public class VentanaCreaProyecto extends javax.swing.JFrame implements WindowLis
 
         etiquetaNombre.setText("Nombre del Proyecto:");
 
-        etiquetaEmpleado.setText("Seleccione al empleado:");
-
-        etiquetaRol.setText("Asigna el Rol:");
-
         botonVolver.setText("VOLVER");
         botonVolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -83,67 +75,45 @@ public class VentanaCreaProyecto extends javax.swing.JFrame implements WindowLis
 
         botonAlta.setText("CREAR PROYECTO");
 
-        jSeparator1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        etiquetaDuracion.setText("Asigna la duración:");
+        etiquetaDuracion.setText("Asigna la duración del Proyecto:");
 
         javax.swing.GroupLayout contenedorBotonesLayout = new javax.swing.GroupLayout(contenedorBotones);
         contenedorBotones.setLayout(contenedorBotonesLayout);
         contenedorBotonesLayout.setHorizontalGroup(
             contenedorBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, contenedorBotonesLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jSeparator1)
-                .addContainerGap())
             .addGroup(contenedorBotonesLayout.createSequentialGroup()
                 .addGap(17, 17, 17)
                 .addGroup(contenedorBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(etiquetaDuracion)
                     .addComponent(botonVolver)
-                    .addComponent(etiquetaRol)
-                    .addComponent(etiquetaNombre)
-                    .addComponent(etiquetaEmpleado))
+                    .addComponent(etiquetaNombre))
+                .addGap(58, 58, 58)
                 .addGroup(contenedorBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(contenedorBotonesLayout.createSequentialGroup()
-                        .addGap(58, 58, 58)
-                        .addGroup(contenedorBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(contenedorBotonesLayout.createSequentialGroup()
-                                .addComponent(textoNombre)
-                                .addGap(89, 89, 89))
-                            .addGroup(contenedorBotonesLayout.createSequentialGroup()
-                                .addComponent(botonAlta, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(114, Short.MAX_VALUE))))
+                        .addComponent(botonAlta, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(contenedorBotonesLayout.createSequentialGroup()
-                        .addGap(39, 39, 39)
-                        .addGroup(contenedorBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(comboBoxRol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(comboBoxEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addGroup(contenedorBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(textoDuracion)
+                            .addComponent(textoNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE))
+                        .addGap(89, 89, 89))))
         );
         contenedorBotonesLayout.setVerticalGroup(
             contenedorBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(contenedorBotonesLayout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(52, 52, 52)
                 .addGroup(contenedorBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(etiquetaNombre)
-                    .addComponent(textoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(21, 21, 21)
-                .addGroup(contenedorBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(etiquetaEmpleado)
-                    .addComponent(comboBoxEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(textoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(etiquetaNombre))
                 .addGap(18, 18, 18)
                 .addGroup(contenedorBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(etiquetaRol)
-                    .addComponent(comboBoxRol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(etiquetaDuracion)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
+                    .addComponent(textoDuracion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(etiquetaDuracion))
+                .addGap(31, 31, 31)
                 .addGroup(contenedorBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botonVolver)
                     .addComponent(botonAlta))
-                .addGap(42, 42, 42))
+                .addContainerGap(34, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout contenedorLayout = new javax.swing.GroupLayout(contenedor);
@@ -185,17 +155,13 @@ public class VentanaCreaProyecto extends javax.swing.JFrame implements WindowLis
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonAlta;
     private javax.swing.JButton botonVolver;
-    private javax.swing.JComboBox<String> comboBoxEmpleado;
-    private javax.swing.JComboBox<String> comboBoxRol;
     private javax.swing.JPanel contenedor;
     private javax.swing.JPanel contenedorBotones;
     private javax.swing.JPanel contenedorLogo;
     private javax.swing.JLabel etiquetaDuracion;
-    private javax.swing.JLabel etiquetaEmpleado;
     private javax.swing.JLabel etiquetaLogo;
     private javax.swing.JLabel etiquetaNombre;
-    private javax.swing.JLabel etiquetaRol;
-    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JTextField textoDuracion;
     private javax.swing.JTextField textoNombre;
     // End of variables declaration//GEN-END:variables
 
