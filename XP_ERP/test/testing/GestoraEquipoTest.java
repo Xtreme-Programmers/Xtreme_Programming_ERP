@@ -5,7 +5,7 @@
  */
 package testing;
 
-import gestora.GestoraEquipo;
+import gestoras.GestoraEquipo;
 import modelo.MiembroEquipo;
 import org.junit.After;
 import org.junit.AfterClass;
