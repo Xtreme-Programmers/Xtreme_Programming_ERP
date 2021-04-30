@@ -64,8 +64,8 @@ public class MiembroEquipoTest {
     @Test
     public void testSetIdMiembro() throws Exception {
         System.out.println("setIdMiembro");
-        String idMiembro = "";
-        MiembroEquipo instance = new MiembroEquipo("1234", "1234");
+        String idMiembro = "1234";
+        //MiembroEquipo instance = new MiembroEquipo("1234", "1234");
         instance.setIdMiembro(idMiembro);
         fail("¡¡¡Los datos que se querían establecer no se añadieron!!!");
     }
@@ -77,14 +77,10 @@ public class MiembroEquipoTest {
     public void testGetPass() {
         System.out.println("getPass");
 
-        try {
-            String expResult = "";
-            String result = instance.getPass();
-            assertEquals(expResult, result);
-            fail("¡¡¡No se obtuvieron datos del tipo deseado!!!");
-        } catch (MyException ex) {
-            System.out.println(ex.getMessage());
-        }
+        String expResult = "";
+        String result = instance.getPass();
+        assertEquals(expResult, result);
+        fail("¡¡¡No se obtuvieron datos del tipo deseado!!!");
 
     }
 
@@ -97,7 +93,7 @@ public class MiembroEquipoTest {
     public void testSetPass() throws Exception {
         System.out.println("setPass");
         String pass = "33211";
-        MiembroEquipo instance = new MiembroEquipo();
+        //MiembroEquipo instance = new MiembroEquipo();
         instance.setPass(pass);
         fail("¡¡¡Los datos que se querían establecer no se añadieron!!!");
     }
@@ -165,7 +161,7 @@ public class MiembroEquipoTest {
     public void testEliminarRol() {
         System.out.println("eliminarRol");
         String codigo = "";
-        MiembroEquipo instance = new MiembroEquipo(codigo, "1234");
+        //MiembroEquipo instance = new MiembroEquipo(codigo, "1234");
         boolean expResult = false;
         boolean result = instance.eliminarRol(codigo);
         assertEquals(expResult, result);
@@ -178,7 +174,7 @@ public class MiembroEquipoTest {
     @Test
     public void testHashCode() {
         System.out.println("hashCode");
-        MiembroEquipo instance = new MiembroEquipo();
+        //MiembroEquipo instance = new MiembroEquipo();
         int expResult = 0;
         int result = instance.hashCode();
         assertEquals(expResult, result);
@@ -192,7 +188,7 @@ public class MiembroEquipoTest {
     public void testEquals() {
         System.out.println("equals");
         Object obj = null;
-        MiembroEquipo instance = new MiembroEquipo();
+        //MiembroEquipo instance = new MiembroEquipo();
         boolean expResult = false;
         boolean result = instance.equals(obj);
         assertEquals(expResult, result);
