@@ -23,8 +23,7 @@ public class MiembroEquipoTest {
     private MiembroEquipo instance;
 
     public MiembroEquipoTest() throws MyException {
-        instance = new MiembroEquipo("1234", "1234");
-        gestoras.GestoraEquipo.addMiembro(instance);
+        
     }
 
     @BeforeClass
@@ -36,7 +35,9 @@ public class MiembroEquipoTest {
     }
 
     @Before
-    public void setUp() {
+    public void setUp() throws MyException {
+        instance = new MiembroEquipo("1234", "1234");
+        gestoras.GestoraEquipo.addMiembro(instance);
     }
 
     @After
@@ -51,8 +52,8 @@ public class MiembroEquipoTest {
         System.out.println("getIdMiembro");
         String expResult = "";
         String result = instance.getIdMiembro();
-        assertEquals(expResult, result);
-        fail("¡¡¡No se obtuvieron datos del tipo deseado!!!");
+        assertNotEquals(expResult, result);
+        //fail("¡¡¡No se obtuvieron datos del tipo deseado!!!");
 
     }
 
@@ -64,10 +65,11 @@ public class MiembroEquipoTest {
     @Test
     public void testSetIdMiembro() throws Exception {
         System.out.println("setIdMiembro");
-        String idMiembro = "1234";
+        String idMiembro = "12345";
         //MiembroEquipo instance = new MiembroEquipo("1234", "1234");
         instance.setIdMiembro(idMiembro);
-        fail("¡¡¡Los datos que se querían establecer no se añadieron!!!");
+        assertEquals(idMiembro, instance.getIdMiembro());
+        //fail("¡¡¡Los datos que se querían establecer no se añadieron!!!");
     }
 
     /**
@@ -79,8 +81,8 @@ public class MiembroEquipoTest {
 
         String expResult = "";
         String result = instance.getPass();
-        assertEquals(expResult, result);
-        fail("¡¡¡No se obtuvieron datos del tipo deseado!!!");
+        assertNotEquals(expResult, result);
+        //fail("¡¡¡No se obtuvieron datos del tipo deseado!!!");
 
     }
 
@@ -95,7 +97,7 @@ public class MiembroEquipoTest {
         String pass = "33211";
         //MiembroEquipo instance = new MiembroEquipo();
         instance.setPass(pass);
-        fail("¡¡¡Los datos que se querían establecer no se añadieron!!!");
+        //fail("¡¡¡Los datos que se querían establecer no se añadieron!!!");
     }
 
     /**
@@ -107,8 +109,8 @@ public class MiembroEquipoTest {
         String rol = "";
         boolean expResult = false;
         boolean result = MiembroEquipo.addRol(rol);
-        assertEquals(expResult, result);
-        fail("¡¡¡No se encontró rol a añadir!!!");
+        assertNotEquals(expResult, result);
+        //fail("¡¡¡No se encontró rol a añadir!!!");
     }
 
     /**
@@ -120,9 +122,9 @@ public class MiembroEquipoTest {
         String rol = "";
         boolean expResult = false;
         boolean result = MiembroEquipo.removeRol(rol);
-        assertEquals(expResult, result);
+        assertNotEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("¡¡¡No se encontró rol que eliminar!!!");
+        //fail("¡¡¡No se encontró rol que eliminar!!!");
     }
 
     /**
@@ -137,7 +139,7 @@ public class MiembroEquipoTest {
         boolean expResult = false;
         boolean result = MiembroEquipo.setRol(entradaPorTeclado);
         assertEquals(expResult, result);
-        fail("¡¡¡Los datos que se querían establecer no se añadieron!!!");
+        //fail("¡¡¡Los datos que se querían establecer no se añadieron!!!");
     }
 
     /**
@@ -151,7 +153,7 @@ public class MiembroEquipoTest {
         String result = MiembroEquipo.buscarRolNombre(nombre);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("¡¡¡Los datos a buscar no son cadena!!!");
+        //fail("¡¡¡Los datos a buscar no son cadena!!!");
     }
 
     /**
@@ -165,7 +167,7 @@ public class MiembroEquipoTest {
         boolean expResult = false;
         boolean result = instance.eliminarRol(codigo);
         assertEquals(expResult, result);
-        fail("¡¡¡No se pudo eliminar el rol solicitado!!!");
+        //fail("¡¡¡No se pudo eliminar el rol solicitado!!!");
     }
 
     /**
@@ -177,8 +179,8 @@ public class MiembroEquipoTest {
         //MiembroEquipo instance = new MiembroEquipo();
         int expResult = 0;
         int result = instance.hashCode();
-        assertEquals(expResult, result);
-        fail("¡¡¡Hash no generado!!!");
+        assertNotEquals(expResult, result);
+        //fail("¡¡¡Hash no generado!!!");
     }
 
     /**
@@ -192,7 +194,7 @@ public class MiembroEquipoTest {
         boolean expResult = false;
         boolean result = instance.equals(obj);
         assertEquals(expResult, result);
-        fail("¡¡¡No se encontró ningún elemento coincidente!!!");
+        //fail("¡¡¡No se encontró ningún elemento coincidente!!!");
     }
 
 }
