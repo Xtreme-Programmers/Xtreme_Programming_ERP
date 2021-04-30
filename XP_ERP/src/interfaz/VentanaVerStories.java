@@ -5,9 +5,12 @@
  */
 package interfaz;
 
+import excepciones.MyException;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.util.HashSet;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
 import modelo.MiembroEquipo;
 import modelo.Proyecto;
@@ -273,11 +276,16 @@ public class VentanaVerStories extends javax.swing.JFrame implements WindowListe
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonAniadeStoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAniadeStoryActionPerformed
-        // TODO add your handling code here:
+        setPanelAniadeStory(true);
+        try {
+            Story s = new Story(campoTitulo.getText(), campoHorasEstimadas.getText(), campoContenido.getText());
+        } catch (MyException ex) {
+            Consola.muestraMensaje(ex.getMessage());
+        }
     }//GEN-LAST:event_botonAniadeStoryActionPerformed
 
     private void botonModificaStoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonModificaStoryActionPerformed
-        // TODO add your handling code here:
+        setPanelAniadeStory(true);
     }//GEN-LAST:event_botonModificaStoryActionPerformed
 
     private void botonConfirmaStoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonConfirmaStoryActionPerformed
@@ -381,6 +389,23 @@ public class VentanaVerStories extends javax.swing.JFrame implements WindowListe
         }
     }
 
+    private void setPanelModificaStory(boolean b) {
+        etiqueta_Titulo.setEnabled(b);
+        campoTitulo.setEnabled(b);
+        etiqueta_Contenido.setEnabled(b);
+        campoContenido.setEnabled(b);
+        etiqueta_horasEstimadas.setEnabled(b);
+        campoHorasEstimadas.setEnabled(b);
+        etiqueta_HorasFinales.setEnabled(b);
+        campoHorasFinales.setEnabled(b);
+        etiqueta_MiembroA.setEnabled(b);
+        comboMiembroA.setEnabled(b);
+        etiqueta_MiembroB.setEnabled(b);
+        comboMienbroB.setEnabled(b);
+        botonConfirmaStory.setVisible(b);
+        botonConfirmaStory.setText("Modifica Story");
+    }
+    
     private void setPanelAniadeStory(boolean b) {
         etiqueta_Titulo.setEnabled(b);
         campoTitulo.setEnabled(b);
@@ -395,5 +420,6 @@ public class VentanaVerStories extends javax.swing.JFrame implements WindowListe
         etiqueta_MiembroB.setEnabled(b);
         comboMienbroB.setEnabled(b);
         botonConfirmaStory.setVisible(b);
+        botonConfirmaStory.setText("Añade Story");
     }
 }
