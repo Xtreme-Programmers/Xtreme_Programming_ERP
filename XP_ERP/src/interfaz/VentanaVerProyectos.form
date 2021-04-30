@@ -40,7 +40,7 @@
               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jPanel2" min="-2" pref="454" max="-2" attributes="0"/>
+                  <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
                   <Component id="jPanel4" min="-2" max="-2" attributes="0"/>
                   <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
               </Group>
@@ -109,7 +109,7 @@
                   <Component id="botonVerStoriesArchivados" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="botonEliminaProyectoArchivado" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace pref="16" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -284,7 +284,7 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="botonCambiaEnCurso" pref="74" max="32767" attributes="0"/>
+              <Component id="botonCambiaEnCurso" max="32767" attributes="0"/>
               <Component id="botonCambiaArchivado" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
@@ -303,7 +303,9 @@
       <SubComponents>
         <Component class="javax.swing.JButton" name="botonCambiaArchivado">
           <Properties>
-            <Property name="text" type="java.lang.String" value="&lt;--"/>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/imagenes/flecha_Dch.png"/>
+            </Property>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonCambiaArchivadoActionPerformed"/>
@@ -311,7 +313,9 @@
         </Component>
         <Component class="javax.swing.JButton" name="botonCambiaEnCurso">
           <Properties>
-            <Property name="text" type="java.lang.String" value="--&gt;"/>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/imagenes/flecha_Izq.png"/>
+            </Property>
             <Property name="toolTipText" type="java.lang.String" value=""/>
           </Properties>
           <Events>

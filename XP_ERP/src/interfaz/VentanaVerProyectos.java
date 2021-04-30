@@ -170,7 +170,7 @@ public class VentanaVerProyectos extends javax.swing.JFrame implements WindowLis
                 .addComponent(botonVerStoriesArchivados)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(botonEliminaProyectoArchivado)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         tablaEnCurso.setModel(new javax.swing.table.DefaultTableModel(
@@ -264,14 +264,14 @@ public class VentanaVerProyectos extends javax.swing.JFrame implements WindowLis
                 .addGap(51, 51, 51))
         );
 
-        botonCambiaArchivado.setText("<--");
+        botonCambiaArchivado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/flecha_Dch.png"))); // NOI18N
         botonCambiaArchivado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonCambiaArchivadoActionPerformed(evt);
             }
         });
 
-        botonCambiaEnCurso.setText("-->");
+        botonCambiaEnCurso.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/flecha_Izq.png"))); // NOI18N
         botonCambiaEnCurso.setToolTipText("");
         botonCambiaEnCurso.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -283,7 +283,7 @@ public class VentanaVerProyectos extends javax.swing.JFrame implements WindowLis
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(botonCambiaEnCurso, javax.swing.GroupLayout.DEFAULT_SIZE, 74, Short.MAX_VALUE)
+            .addComponent(botonCambiaEnCurso, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(botonCambiaArchivado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
@@ -315,7 +315,7 @@ public class VentanaVerProyectos extends javax.swing.JFrame implements WindowLis
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 454, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
