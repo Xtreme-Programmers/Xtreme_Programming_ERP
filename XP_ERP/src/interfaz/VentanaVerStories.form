@@ -132,43 +132,43 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Component id="comboMiembroA" max="32767" attributes="0"/>
               <Component id="comboMienbroB" max="32767" attributes="0"/>
-              <Component id="jLabel1" alignment="0" max="32767" attributes="0"/>
-              <Component id="jLabel2" alignment="0" max="32767" attributes="0"/>
+              <Component id="etiqueta_MiembroB" alignment="0" max="32767" attributes="0"/>
+              <Component id="etiqueta_MiembroA" alignment="0" max="32767" attributes="0"/>
               <Component id="botonConfirmaStory" alignment="0" max="32767" attributes="0"/>
-              <Component id="jLabel4" alignment="0" max="32767" attributes="0"/>
-              <Component id="jLabel5" alignment="0" max="32767" attributes="0"/>
+              <Component id="etiqueta_horasEstimadas" alignment="0" max="32767" attributes="0"/>
+              <Component id="etiqueta_HorasFinales" alignment="0" max="32767" attributes="0"/>
               <Component id="campoHorasEstimadas" alignment="0" max="32767" attributes="0"/>
               <Component id="campoHorasFinales" alignment="0" max="32767" attributes="0"/>
-              <Component id="jLabel6" alignment="0" max="32767" attributes="0"/>
-              <Component id="campoNombre" alignment="0" max="32767" attributes="0"/>
-              <Component id="jLabel7" alignment="0" max="32767" attributes="0"/>
-              <Component id="campoDescripcion" alignment="0" max="32767" attributes="0"/>
+              <Component id="etiqueta_Titulo" alignment="0" max="32767" attributes="0"/>
+              <Component id="campoTitulo" alignment="0" max="32767" attributes="0"/>
+              <Component id="etiqueta_Contenido" alignment="0" max="32767" attributes="0"/>
+              <Component id="campoContenido" alignment="0" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
-                  <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
+                  <Component id="etiqueta_Titulo" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="campoNombre" min="-2" max="-2" attributes="0"/>
+                  <Component id="campoTitulo" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
+                  <Component id="etiqueta_Contenido" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="campoDescripcion" min="-2" max="-2" attributes="0"/>
+                  <Component id="campoContenido" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+                  <Component id="etiqueta_horasEstimadas" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="campoHorasEstimadas" min="-2" pref="20" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
+                  <Component id="etiqueta_HorasFinales" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="campoHorasFinales" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                  <Component id="etiqueta_MiembroA" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="comboMiembroA" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                  <Component id="etiqueta_MiembroB" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="comboMienbroB" min="-2" max="-2" attributes="0"/>
                   <EmptySpace pref="54" max="32767" attributes="0"/>
@@ -208,13 +208,13 @@
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel1">
+        <Component class="javax.swing.JLabel" name="etiqueta_MiembroB">
           <Properties>
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="text" type="java.lang.String" value="Miembro B"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel2">
+        <Component class="javax.swing.JLabel" name="etiqueta_MiembroA">
           <Properties>
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="text" type="java.lang.String" value="Miembro A"/>
@@ -228,13 +228,14 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonConfirmaStoryActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel4">
+        <Component class="javax.swing.JLabel" name="etiqueta_horasEstimadas">
           <Properties>
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="text" type="java.lang.String" value="Horas estimadas"/>
+            <Property name="toolTipText" type="java.lang.String" value=""/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel5">
+        <Component class="javax.swing.JLabel" name="etiqueta_HorasFinales">
           <Properties>
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="text" type="java.lang.String" value="Horas Finales"/>
@@ -244,21 +245,21 @@
         </Component>
         <Component class="javax.swing.JTextField" name="campoHorasFinales">
         </Component>
-        <Component class="javax.swing.JTextField" name="campoNombre">
+        <Component class="javax.swing.JTextField" name="campoTitulo">
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel6">
+        <Component class="javax.swing.JLabel" name="etiqueta_Titulo">
           <Properties>
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="text" type="java.lang.String" value="Nombre de la Story"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel7">
+        <Component class="javax.swing.JLabel" name="etiqueta_Contenido">
           <Properties>
             <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="text" type="java.lang.String" value="Descripci&#xf3;n de la Story"/>
+            <Property name="text" type="java.lang.String" value="Contenido de la Story"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="campoDescripcion">
+        <Component class="javax.swing.JTextField" name="campoContenido">
         </Component>
       </SubComponents>
     </Container>

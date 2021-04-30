@@ -32,6 +32,7 @@ public class VentanaVerStories extends javax.swing.JFrame implements WindowListe
         this.p = p;
         modeloTablaStories = (DefaultTableModel) tablaStories.getModel();
         rellenaTabla();
+        setPanelAniadeStory(false);
     }
 
     /**
@@ -51,17 +52,17 @@ public class VentanaVerStories extends javax.swing.JFrame implements WindowListe
         jPanel3 = new javax.swing.JPanel();
         comboMiembroA = new javax.swing.JComboBox<>();
         comboMienbroB = new javax.swing.JComboBox<>();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        etiqueta_MiembroB = new javax.swing.JLabel();
+        etiqueta_MiembroA = new javax.swing.JLabel();
         botonConfirmaStory = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        etiqueta_horasEstimadas = new javax.swing.JLabel();
+        etiqueta_HorasFinales = new javax.swing.JLabel();
         campoHorasEstimadas = new javax.swing.JTextField();
         campoHorasFinales = new javax.swing.JTextField();
-        campoNombre = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        campoDescripcion = new javax.swing.JTextField();
+        campoTitulo = new javax.swing.JTextField();
+        etiqueta_Titulo = new javax.swing.JLabel();
+        etiqueta_Contenido = new javax.swing.JLabel();
+        campoContenido = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
         botonAniadeStory = new javax.swing.JButton();
         botonModificaStory = new javax.swing.JButton();
@@ -123,11 +124,11 @@ public class VentanaVerStories extends javax.swing.JFrame implements WindowListe
 
         comboMienbroB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Miembro B");
+        etiqueta_MiembroB.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        etiqueta_MiembroB.setText("Miembro B");
 
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Miembro A");
+        etiqueta_MiembroA.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        etiqueta_MiembroA.setText("Miembro A");
 
         botonConfirmaStory.setText("Confirma Añadir Story");
         botonConfirmaStory.addActionListener(new java.awt.event.ActionListener() {
@@ -136,17 +137,18 @@ public class VentanaVerStories extends javax.swing.JFrame implements WindowListe
             }
         });
 
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("Horas estimadas");
+        etiqueta_horasEstimadas.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        etiqueta_horasEstimadas.setText("Horas estimadas");
+        etiqueta_horasEstimadas.setToolTipText("");
 
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("Horas Finales");
+        etiqueta_HorasFinales.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        etiqueta_HorasFinales.setText("Horas Finales");
 
-        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setText("Nombre de la Story");
+        etiqueta_Titulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        etiqueta_Titulo.setText("Nombre de la Story");
 
-        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel7.setText("Descripción de la Story");
+        etiqueta_Contenido.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        etiqueta_Contenido.setText("Contenido de la Story");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -154,42 +156,42 @@ public class VentanaVerStories extends javax.swing.JFrame implements WindowListe
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(comboMiembroA, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(comboMienbroB, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(etiqueta_MiembroB, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(etiqueta_MiembroA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(botonConfirmaStory, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(etiqueta_horasEstimadas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(etiqueta_HorasFinales, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(campoHorasEstimadas)
             .addComponent(campoHorasFinales)
-            .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(campoNombre)
-            .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(campoDescripcion)
+            .addComponent(etiqueta_Titulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(campoTitulo)
+            .addComponent(etiqueta_Contenido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(campoContenido)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addComponent(jLabel6)
+                .addComponent(etiqueta_Titulo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(campoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(campoTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel7)
+                .addComponent(etiqueta_Contenido)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(campoDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(campoContenido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel4)
+                .addComponent(etiqueta_horasEstimadas)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(campoHorasEstimadas, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel5)
+                .addComponent(etiqueta_HorasFinales)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(campoHorasFinales, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel2)
+                .addComponent(etiqueta_MiembroA)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(comboMiembroA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel1)
+                .addComponent(etiqueta_MiembroB)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(comboMienbroB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
@@ -291,19 +293,19 @@ public class VentanaVerStories extends javax.swing.JFrame implements WindowListe
     private javax.swing.JButton botonConfirmaStory;
     private javax.swing.JButton botonModificaStory;
     private javax.swing.JButton botonVolver;
-    private javax.swing.JTextField campoDescripcion;
+    private javax.swing.JTextField campoContenido;
     private javax.swing.JTextField campoHorasEstimadas;
     private javax.swing.JTextField campoHorasFinales;
-    private javax.swing.JTextField campoNombre;
+    private javax.swing.JTextField campoTitulo;
     private javax.swing.JComboBox<String> comboMiembroA;
     private javax.swing.JComboBox<String> comboMienbroB;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel etiqueta_Contenido;
+    private javax.swing.JLabel etiqueta_HorasFinales;
+    private javax.swing.JLabel etiqueta_MiembroA;
+    private javax.swing.JLabel etiqueta_MiembroB;
+    private javax.swing.JLabel etiqueta_Titulo;
+    private javax.swing.JLabel etiqueta_horasEstimadas;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -377,5 +379,21 @@ public class VentanaVerStories extends javax.swing.JFrame implements WindowListe
             filaTabla[5] = nombreMiembroB;
             modeloTablaStories.addRow(filaTabla);
         }
+    }
+
+    private void setPanelAniadeStory(boolean b) {
+        etiqueta_Titulo.setEnabled(b);
+        campoTitulo.setEnabled(b);
+        etiqueta_Contenido.setEnabled(b);
+        campoContenido.setEnabled(b);
+        etiqueta_horasEstimadas.setEnabled(b);
+        campoHorasEstimadas.setEnabled(b);
+        etiqueta_HorasFinales.setEnabled(b);
+        campoHorasFinales.setEnabled(b);
+        etiqueta_MiembroA.setEnabled(b);
+        comboMiembroA.setEnabled(b);
+        etiqueta_MiembroB.setEnabled(b);
+        comboMienbroB.setEnabled(b);
+        botonConfirmaStory.setVisible(b);
     }
 }
