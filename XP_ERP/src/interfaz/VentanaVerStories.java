@@ -6,11 +6,14 @@
 package interfaz;
 
 import excepciones.MyException;
+import gestoras.GestoraEquipo;
+import gestoras.GestoraProyecto;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.util.HashSet;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -27,6 +30,8 @@ public class VentanaVerStories extends javax.swing.JFrame implements WindowListe
 
     private VentanaVerProyectos VENTANA_PROYECTOS;
     private DefaultTableModel modeloTablaStories;
+    private DefaultComboBoxModel modeloComboA;
+    private DefaultComboBoxModel modeloComboB;
     private Proyecto p;
     private boolean modoAniadir;
     /**
@@ -37,10 +42,14 @@ public class VentanaVerStories extends javax.swing.JFrame implements WindowListe
         initComponents();
         this.VENTANA_PROYECTOS = v;
         this.p = p;
+        modoAniadir = true;
         modeloTablaStories = (DefaultTableModel) tablaStories.getModel();
         ListSelectionModel modeloSelectStories = tablaStories.getSelectionModel();
         modeloSelectStories.addListSelectionListener(this);
+        modeloComboA = (DefaultComboBoxModel) comboMiembroA.getModel();
+        modeloComboB = (DefaultComboBoxModel) comboMiembroB.getModel();        
         rellenaTabla();
+        rellenaCombos();
         setPanelAniadeStory(false);
     }
 
@@ -60,10 +69,10 @@ public class VentanaVerStories extends javax.swing.JFrame implements WindowListe
         tablaStories = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
         comboMiembroA = new javax.swing.JComboBox<>();
-        comboMienbroB = new javax.swing.JComboBox<>();
+        comboMiembroB = new javax.swing.JComboBox<>();
         etiqueta_MiembroB = new javax.swing.JLabel();
         etiqueta_MiembroA = new javax.swing.JLabel();
-        botonConfirmaStory = new javax.swing.JButton();
+        botonConfirmaAniadirModificarStory = new javax.swing.JButton();
         etiqueta_horasEstimadas = new javax.swing.JLabel();
         etiqueta_HorasFinales = new javax.swing.JLabel();
         campoHorasEstimadas = new javax.swing.JTextField();
@@ -130,9 +139,9 @@ public class VentanaVerStories extends javax.swing.JFrame implements WindowListe
             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
         );
 
-        comboMiembroA.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboMiembroA.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ID Miembro A" }));
 
-        comboMienbroB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboMiembroB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ID Meimbro B" }));
 
         etiqueta_MiembroB.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         etiqueta_MiembroB.setText("Miembro B");
@@ -140,10 +149,11 @@ public class VentanaVerStories extends javax.swing.JFrame implements WindowListe
         etiqueta_MiembroA.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         etiqueta_MiembroA.setText("Miembro A");
 
-        botonConfirmaStory.setText("Confirma Añadir Story");
-        botonConfirmaStory.addActionListener(new java.awt.event.ActionListener() {
+        botonConfirmaAniadirModificarStory.setText("Confirma Añadir Story");
+        botonConfirmaAniadirModificarStory.setActionCommand("Confirma Añadir/Modificar Story");
+        botonConfirmaAniadirModificarStory.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonConfirmaStoryActionPerformed(evt);
+                botonConfirmaAniadirModificarStoryActionPerformed(evt);
             }
         });
 
@@ -172,10 +182,10 @@ public class VentanaVerStories extends javax.swing.JFrame implements WindowListe
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(comboMiembroA, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(comboMienbroB, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(comboMiembroB, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(etiqueta_MiembroB, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(etiqueta_MiembroA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(botonConfirmaStory, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(botonConfirmaAniadirModificarStory, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(etiqueta_horasEstimadas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(etiqueta_HorasFinales, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(campoHorasEstimadas)
@@ -211,9 +221,9 @@ public class VentanaVerStories extends javax.swing.JFrame implements WindowListe
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(etiqueta_MiembroB)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(comboMienbroB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(comboMiembroB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(botonConfirmaStory)
+                .addComponent(botonConfirmaAniadirModificarStory)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
                 .addComponent(botonCancelaCambios))
         );
@@ -295,24 +305,47 @@ public class VentanaVerStories extends javax.swing.JFrame implements WindowListe
     private void botonAniadeStoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAniadeStoryActionPerformed
         setPanelAniadeStory(true);
         setBotonesPrincipales(false);
-        //botonConfirmaStory.setText("Añade nueva Story");
-        
+        botonConfirmaAniadirModificarStory.setText("Añade nueva Story");
+        modoAniadir = true;        
     }//GEN-LAST:event_botonAniadeStoryActionPerformed
 
     private void botonModificaStoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonModificaStoryActionPerformed
-        if (true) {
-            setPanelAniadeStory(true);
-            setBotonesPrincipales(false);
-            botonConfirmaStory.setText("Modifica Story seleccionada");
-        } else {
-            //Consola.muestraMensaje("Selecciona antes una Story");
-        }
-        
+        setPanelAniadeStory(true);
+        setBotonesPrincipales(false);
+        botonConfirmaAniadirModificarStory.setText("Modifica Story seleccionada");
+        modoAniadir = false;
     }//GEN-LAST:event_botonModificaStoryActionPerformed
 
-    private void botonConfirmaStoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonConfirmaStoryActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_botonConfirmaStoryActionPerformed
+    private void botonConfirmaAniadirModificarStoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonConfirmaAniadirModificarStoryActionPerformed
+        
+        if (modoAniadir = true) {
+            Story s;
+            try {
+                s = new Story(campoTitulo.getText(), campoHorasEstimadas.getText(), campoContenido.getText());
+                p.aniadeStory(s);
+                limpiaTabla();
+                rellenaTabla();
+            } catch (MyException ex) {
+                Consola.muestraMensaje(ex.getMessage());
+            }
+        } else {
+            Story s = seleccionaStory();
+            try {
+                s.setTitulo(campoTitulo.getText());
+                s.setContenido(campoContenido.getText());
+                s.setHorasEstimadas(campoHorasEstimadas.getText());
+                s.setHorasFinales(campoHorasFinales.getText());
+                MiembroEquipo mEA = (MiembroEquipo) comboMiembroA.getSelectedItem();
+                MiembroEquipo mEB = (MiembroEquipo) comboMiembroB.getSelectedItem();
+                s.setMiembroEquipo(mEA, mEB);
+                limpiaTabla();
+                rellenaTabla();
+            } catch (MyException ex) {
+                Consola.muestraMensaje(ex.getMessage());
+            }
+        }
+        
+    }//GEN-LAST:event_botonConfirmaAniadirModificarStoryActionPerformed
 
     private void botonVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVolverActionPerformed
         volver();
@@ -322,12 +355,13 @@ public class VentanaVerStories extends javax.swing.JFrame implements WindowListe
         setPanelAniadeStory(false);
         setPanelModificaStory(false);
         setBotonesPrincipales(true);
+        limpiaFormulario();
     }//GEN-LAST:event_botonCancelaCambiosActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonAniadeStory;
     private javax.swing.JButton botonCancelaCambios;
-    private javax.swing.JButton botonConfirmaStory;
+    private javax.swing.JButton botonConfirmaAniadirModificarStory;
     private javax.swing.JButton botonModificaStory;
     private javax.swing.JButton botonVolver;
     private javax.swing.JTextField campoContenido;
@@ -335,7 +369,7 @@ public class VentanaVerStories extends javax.swing.JFrame implements WindowListe
     private javax.swing.JTextField campoHorasFinales;
     private javax.swing.JTextField campoTitulo;
     private javax.swing.JComboBox<String> comboMiembroA;
-    private javax.swing.JComboBox<String> comboMienbroB;
+    private javax.swing.JComboBox<String> comboMiembroB;
     private javax.swing.JLabel etiqueta_Contenido;
     private javax.swing.JLabel etiqueta_HorasFinales;
     private javax.swing.JLabel etiqueta_MiembroA;
@@ -417,6 +451,10 @@ public class VentanaVerStories extends javax.swing.JFrame implements WindowListe
             modeloTablaStories.addRow(filaTabla);
         }
     }
+    
+    private void limpiaTabla(){
+        modeloTablaStories.setRowCount(0);
+    }
 
     private void setPanelModificaStory(boolean b) {
         etiqueta_Titulo.setEnabled(b);
@@ -430,10 +468,10 @@ public class VentanaVerStories extends javax.swing.JFrame implements WindowListe
         etiqueta_MiembroA.setEnabled(b);
         comboMiembroA.setEnabled(b);
         etiqueta_MiembroB.setEnabled(b);
-        comboMienbroB.setEnabled(b);
-        botonConfirmaStory.setVisible(b);
+        comboMiembroB.setEnabled(b);
+        botonConfirmaAniadirModificarStory.setVisible(b);
         botonCancelaCambios.setVisible(b);
-        botonConfirmaStory.setText("Modifica Story");
+        botonConfirmaAniadirModificarStory.setText("Modifica Story");
     }
     
     private void setPanelAniadeStory(boolean b) {
@@ -444,16 +482,16 @@ public class VentanaVerStories extends javax.swing.JFrame implements WindowListe
         etiqueta_horasEstimadas.setEnabled(b);
         campoHorasEstimadas.setEnabled(b);
         
-        etiqueta_HorasFinales.setVisible(!b);
-        campoHorasFinales.setVisible(!b);
+        etiqueta_HorasFinales.setVisible(b);
+        campoHorasFinales.setVisible(b);
         etiqueta_MiembroA.setEnabled(b);
         comboMiembroA.setEnabled(b);
         etiqueta_MiembroB.setEnabled(b);
-        comboMienbroB.setEnabled(b);
+        comboMiembroB.setEnabled(b);
         
-        botonConfirmaStory.setVisible(b);
+        botonConfirmaAniadirModificarStory.setVisible(b);
         botonCancelaCambios.setVisible(b);
-        botonConfirmaStory.setText("Añade Story");
+        botonConfirmaAniadirModificarStory.setText("Añade Story");
     }
     
     private void setBotonesPrincipales(boolean b) {
@@ -463,5 +501,46 @@ public class VentanaVerStories extends javax.swing.JFrame implements WindowListe
 
     @Override
     public void valueChanged(ListSelectionEvent lse) {
+        if (modoAniadir == false) {
+            Story s = seleccionaStory();
+            campoTitulo.setText(s.getTitulo());
+            campoContenido.setText(s.getContenido());
+            campoHorasEstimadas.setText(s.getHorasEstimadas() + "");
+            campoHorasFinales.setText(s.getHorasFinales() + "");
+            comboMiembroA.setSelectedItem(s.getMiembroA());
+            comboMiembroB.setSelectedItem(s.getMiembroB());
+        }
     }
+
+    private void rellenaCombos() {
+        HashSet<MiembroEquipo> listadoMiembros = GestoraEquipo.getLista();
+        for (MiembroEquipo m : listadoMiembros) {
+            modeloComboA.addElement(m);
+            modeloComboB.addElement(m);
+        }
+    }
+    
+    private Story seleccionaStory() {
+        try {
+            int fila = tablaStories.getSelectedRow();
+            String titulo=  tablaStories.getValueAt(fila, 0) + "";
+            return p.buscaStory(titulo);
+        } catch (MyException ex) {
+            Consola.muestraMensaje(ex.getMessage());
+        } catch (ArrayIndexOutOfBoundsException e) {
+            Consola.muestraMensaje("Selecciona una Story ababol!");
+        }
+        return null;
+    }
+
+    private void limpiaFormulario() {
+        campoContenido.setText("");
+        campoHorasEstimadas.setText("");
+        campoHorasFinales.setText("");
+        campoTitulo.setText("");
+        comboMiembroA.setSelectedIndex(0);
+        comboMiembroB.setSelectedIndex(0);
+    }
+    
+    
 }

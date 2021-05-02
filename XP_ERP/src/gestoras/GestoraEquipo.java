@@ -48,4 +48,7 @@ public class GestoraEquipo {
         return false;
     }
 
+    public static HashSet<MiembroEquipo> getLista() {
+        return listadoMiembros;
+    }
 }

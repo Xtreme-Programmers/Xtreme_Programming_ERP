@@ -88,6 +88,15 @@ public class Proyecto {
     public String toString() {
         return "Proyecto{" + "idProyecto=" + idProyecto + ", nombreProyecto=" + nombreProyecto + ", descripcion=" + descripcion + ", listaStories=" + listaStories + ", ESTADOS=" + ESTADOS + ", estadoProyecto=" + estadoProyecto + '}';
     }
+
+    public Story buscaStory(String titulo) throws MyException {
+        for (Story s : listaStories) {
+            if (s.getTitulo().equals(titulo)) {
+                return s;
+            }
+        }
+        throw new MyException("No se encuentra Story");
+    }
     
     
     

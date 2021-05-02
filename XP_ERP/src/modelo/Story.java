@@ -1,6 +1,8 @@
 package modelo;
+
 import excepciones.MyException;
 import java.util.Objects;
+
 /*EQUIPO B*/
 public class Story {
 
@@ -11,13 +13,13 @@ public class Story {
     private int horasEstimadas;
     private int horasFinales;
     private String contenido;
-    
+
     public Story(String titulo, int horasEstimadas, String contenido) throws MyException {
         setTitulo(titulo);
         setHorasEstimadas(horasEstimadas);
         setContenido(contenido);
     }
-    
+
     public Story(String titulo, String horasEstimadas, String contenido) throws MyException {
         setTitulo(titulo);
         setHorasEstimadas(horasEstimadas);
@@ -50,7 +52,10 @@ public class Story {
         return miembroA;
     }
 
-    public void setMiembroEquipo(MiembroEquipo miembroA, MiembroEquipo miembroB) {
+    public void setMiembroEquipo(MiembroEquipo miembroA, MiembroEquipo miembroB) throws MyException {
+        if (miembroA.equals(miembroB)) {
+            throw new MyException("No puedes asignar dos veces el mismo miembro del equipo");
+        }
         this.miembroA = miembroA;
         this.miembroB = miembroB;
     }
@@ -63,22 +68,24 @@ public class Story {
         return horasEstimadas;
     }
 
-    public void setHorasEstimadas(String horasEstimadas) throws MyException {
-        if (horasEstimadas == null || horasEstimadas.equals("")) {
-            throw new MyException("Las horas estimadas no contienen nada");
-        }
-        try {
-            
-        } catch (NumberFormatException e) {
-            throw new MyException("Las horas estimadas contienen caracteres no válidos");
-        }
-    }
-    
     public void setHorasEstimadas(int horasEstimadas) throws MyException {
         if (horasEstimadas < 0) {
             throw new MyException("Las horas estimadas no puede ser negativo");
         }
         this.horasEstimadas = horasEstimadas;
+    }
+
+    public void setHorasEstimadas(String horasEstimadasSt) throws MyException {
+        if (horasEstimadasSt == null || horasEstimadasSt.equals("")) {
+            throw new MyException("No has introducido nada en las horas iniciales");
+        }
+        int horasFinales;
+        try {
+            horasFinales = Integer.parseInt(horasEstimadasSt);
+        } catch (NumberFormatException e) {
+            throw new MyException("Has introducido caracteres no válidos en las horas estimadas");
+        }
+        setHorasEstimadas(horasFinales);
     }
 
     public int getHorasFinales() {
@@ -90,6 +97,20 @@ public class Story {
             throw new MyException("Las horas finales no puede ser negativo");
         }
         this.horasFinales = horasFinales;
+    }
+
+    public void setHorasFinales(String horasFinalesSt) throws MyException {
+        if (horasFinalesSt == null || horasFinalesSt.equals("")) {
+            setHorasFinales(0); // Se establece a 0 cuando se desconocen las horas finales
+        } else {
+            int horasFinales;
+            try {
+                horasFinales = Integer.parseInt(horasFinalesSt);
+            } catch (NumberFormatException e) {
+                throw new MyException("Has introducido caracteres no válidos en las horas");
+            }
+            setHorasFinales(horasFinales);
+        }
     }
 
     public String getContenido() {
@@ -133,6 +154,4 @@ public class Story {
         return true;
     }
 
-
-    
 }

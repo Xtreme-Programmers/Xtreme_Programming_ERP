@@ -116,4 +116,11 @@ public class MiembroEquipo {
         return true;
     }
 
+    @Override
+    public String toString() {
+        return "MiembroEquipo ID = " + idMiembro;
+    }
+    
+    
+
 }

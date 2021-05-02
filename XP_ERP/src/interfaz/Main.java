@@ -14,6 +14,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
+import modelo.MiembroEquipo;
 import modelo.Proyecto;
 import modelo.Story;
 
@@ -368,6 +369,38 @@ public class Main extends javax.swing.JFrame implements WindowListener{
 
     private void rellenaConDatos() {
         try {
+            MiembroEquipo m1 = new MiembroEquipo("M01", "1234");
+            MiembroEquipo m2 = new MiembroEquipo("M02", "1234");
+            MiembroEquipo m3 = new MiembroEquipo("M03", "1234");
+            MiembroEquipo m4 = new MiembroEquipo("M04", "1234");
+            MiembroEquipo m5 = new MiembroEquipo("M05", "1234");
+            MiembroEquipo m6 = new MiembroEquipo("M06", "1234");
+            MiembroEquipo m7 = new MiembroEquipo("M07", "1234");
+            MiembroEquipo m8 = new MiembroEquipo("M08", "1234");
+            MiembroEquipo m9 = new MiembroEquipo("M09", "1234");
+            MiembroEquipo m10 = new MiembroEquipo("M010", "1234");
+            MiembroEquipo m11 = new MiembroEquipo("M011", "1234");
+            MiembroEquipo m12 = new MiembroEquipo("M012", "1234");
+            MiembroEquipo m13 = new MiembroEquipo("M013", "1234");
+            MiembroEquipo m14 = new MiembroEquipo("M014", "1234");
+            MiembroEquipo m15 = new MiembroEquipo("M015", "1234");
+            MiembroEquipo m16 = new MiembroEquipo("M016", "1234");
+            GestoraEquipo.addMiembro(m1);
+            GestoraEquipo.addMiembro(m2);
+            GestoraEquipo.addMiembro(m3);
+            GestoraEquipo.addMiembro(m4);
+            GestoraEquipo.addMiembro(m5);
+            GestoraEquipo.addMiembro(m6);
+            GestoraEquipo.addMiembro(m7);
+            GestoraEquipo.addMiembro(m8);
+            GestoraEquipo.addMiembro(m9);
+            GestoraEquipo.addMiembro(m10);
+            GestoraEquipo.addMiembro(m11);
+            GestoraEquipo.addMiembro(m12);
+            GestoraEquipo.addMiembro(m13);
+            GestoraEquipo.addMiembro(m14);
+            GestoraEquipo.addMiembro(m15);
+            GestoraEquipo.addMiembro(m16);
             Story s1 = new Story("Investigación previa", "3", "En un lugar de la Mancha, de cuyo nombre no quiero acordarme");
             Story s2 = new Story("Clase Usuario", "2", "No ha mucho tiempo que vivía un hidalgo de los de lanza en astillero");
             Story s3 = new Story("Reunión técnica con Cliente", "2", "Adarga antigua, rocín flaco y galgo corredor.");
@@ -376,6 +409,14 @@ public class Main extends javax.swing.JFrame implements WindowListener{
             Story s6 = new Story("Creación clases Junit", "1", "Algún palomino de añadidura los domingos, consumían las tres partes de su hacienda.");
             Story s7 = new Story("Algorimos modelo", "4", "El resto della concluían sayo de velarte, calzas de velludo para las fiestas");
             Story s8 = new Story("Conectar interfaz", "9", "Con sus pantuflos de lo mesmo, y los días de entresemana se honraba con su vellorí de lo más fino.");
+            s1.setMiembroEquipo(m1, m9);
+            s2.setMiembroEquipo(m2, m10);
+            s3.setMiembroEquipo(m3, m11);
+            s4.setMiembroEquipo(m4, m12);
+            s5.setMiembroEquipo(m5, m13);
+            s6.setMiembroEquipo(m6, m14);
+            s7.setMiembroEquipo(m7, m15);
+            s8.setMiembroEquipo(m8, m16);  
             Proyecto p1 = new Proyecto("Aplicación Tin-Tinder", "Es una app que le da mil vueltas a Tinder");
             p1.setEstadoProyecto("enCurso");
             p1.aniadeStory(s1);
@@ -420,6 +461,7 @@ public class Main extends javax.swing.JFrame implements WindowListener{
             p4.aniadeStory(s7);
             p4.aniadeStory(s8);
             GestoraProyecto.addProyecto(p4);
+            
         } catch (MyException ex) {
             Consola.muestraMensaje(ex.getMessage());
         }
