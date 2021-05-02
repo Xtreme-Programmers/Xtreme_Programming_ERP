@@ -11,6 +11,9 @@ import java.awt.event.WindowListener;
 import java.util.HashSet;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ListSelectionModel;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 import modelo.MiembroEquipo;
 import modelo.Proyecto;
@@ -20,11 +23,12 @@ import modelo.Story;
  *
  * @author ryano
  */
-public class VentanaVerStories extends javax.swing.JFrame implements WindowListener{
+public class VentanaVerStories extends javax.swing.JFrame implements WindowListener, ListSelectionListener{
 
     private VentanaVerProyectos VENTANA_PROYECTOS;
     private DefaultTableModel modeloTablaStories;
     private Proyecto p;
+    private boolean modoAniadir;
     /**
      * Creates new form VentanaVerStories
      */
@@ -34,6 +38,8 @@ public class VentanaVerStories extends javax.swing.JFrame implements WindowListe
         this.VENTANA_PROYECTOS = v;
         this.p = p;
         modeloTablaStories = (DefaultTableModel) tablaStories.getModel();
+        ListSelectionModel modeloSelectStories = tablaStories.getSelectionModel();
+        modeloSelectStories.addListSelectionListener(this);
         rellenaTabla();
         setPanelAniadeStory(false);
     }
@@ -66,6 +72,7 @@ public class VentanaVerStories extends javax.swing.JFrame implements WindowListe
         etiqueta_Titulo = new javax.swing.JLabel();
         etiqueta_Contenido = new javax.swing.JLabel();
         campoContenido = new javax.swing.JTextField();
+        botonCancelaCambios = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         botonAniadeStory = new javax.swing.JButton();
         botonModificaStory = new javax.swing.JButton();
@@ -153,6 +160,13 @@ public class VentanaVerStories extends javax.swing.JFrame implements WindowListe
         etiqueta_Contenido.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         etiqueta_Contenido.setText("Contenido de la Story");
 
+        botonCancelaCambios.setText("Cancelar");
+        botonCancelaCambios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonCancelaCambiosActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -170,6 +184,7 @@ public class VentanaVerStories extends javax.swing.JFrame implements WindowListe
             .addComponent(campoTitulo)
             .addComponent(etiqueta_Contenido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(campoContenido)
+            .addComponent(botonCancelaCambios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -197,8 +212,10 @@ public class VentanaVerStories extends javax.swing.JFrame implements WindowListe
                 .addComponent(etiqueta_MiembroB)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(comboMienbroB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
-                .addComponent(botonConfirmaStory))
+                .addGap(18, 18, 18)
+                .addComponent(botonConfirmaStory)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
+                .addComponent(botonCancelaCambios))
         );
 
         botonAniadeStory.setText("Añade Story");
@@ -277,15 +294,20 @@ public class VentanaVerStories extends javax.swing.JFrame implements WindowListe
 
     private void botonAniadeStoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAniadeStoryActionPerformed
         setPanelAniadeStory(true);
-        try {
-            Story s = new Story(campoTitulo.getText(), campoHorasEstimadas.getText(), campoContenido.getText());
-        } catch (MyException ex) {
-            Consola.muestraMensaje(ex.getMessage());
-        }
+        setBotonesPrincipales(false);
+        //botonConfirmaStory.setText("Añade nueva Story");
+        
     }//GEN-LAST:event_botonAniadeStoryActionPerformed
 
     private void botonModificaStoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonModificaStoryActionPerformed
-        setPanelAniadeStory(true);
+        if (true) {
+            setPanelAniadeStory(true);
+            setBotonesPrincipales(false);
+            botonConfirmaStory.setText("Modifica Story seleccionada");
+        } else {
+            //Consola.muestraMensaje("Selecciona antes una Story");
+        }
+        
     }//GEN-LAST:event_botonModificaStoryActionPerformed
 
     private void botonConfirmaStoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonConfirmaStoryActionPerformed
@@ -296,8 +318,15 @@ public class VentanaVerStories extends javax.swing.JFrame implements WindowListe
         volver();
     }//GEN-LAST:event_botonVolverActionPerformed
 
+    private void botonCancelaCambiosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelaCambiosActionPerformed
+        setPanelAniadeStory(false);
+        setPanelModificaStory(false);
+        setBotonesPrincipales(true);
+    }//GEN-LAST:event_botonCancelaCambiosActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonAniadeStory;
+    private javax.swing.JButton botonCancelaCambios;
     private javax.swing.JButton botonConfirmaStory;
     private javax.swing.JButton botonModificaStory;
     private javax.swing.JButton botonVolver;
@@ -403,6 +432,7 @@ public class VentanaVerStories extends javax.swing.JFrame implements WindowListe
         etiqueta_MiembroB.setEnabled(b);
         comboMienbroB.setEnabled(b);
         botonConfirmaStory.setVisible(b);
+        botonCancelaCambios.setVisible(b);
         botonConfirmaStory.setText("Modifica Story");
     }
     
@@ -413,13 +443,25 @@ public class VentanaVerStories extends javax.swing.JFrame implements WindowListe
         campoContenido.setEnabled(b);
         etiqueta_horasEstimadas.setEnabled(b);
         campoHorasEstimadas.setEnabled(b);
-        etiqueta_HorasFinales.setEnabled(b);
-        campoHorasFinales.setEnabled(b);
+        
+        etiqueta_HorasFinales.setVisible(!b);
+        campoHorasFinales.setVisible(!b);
         etiqueta_MiembroA.setEnabled(b);
         comboMiembroA.setEnabled(b);
         etiqueta_MiembroB.setEnabled(b);
         comboMienbroB.setEnabled(b);
+        
         botonConfirmaStory.setVisible(b);
+        botonCancelaCambios.setVisible(b);
         botonConfirmaStory.setText("Añade Story");
+    }
+    
+    private void setBotonesPrincipales(boolean b) {
+        botonAniadeStory.setEnabled(b);
+        botonModificaStory.setEnabled(b);
+    }
+
+    @Override
+    public void valueChanged(ListSelectionEvent lse) {
     }
 }

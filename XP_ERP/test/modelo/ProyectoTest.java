@@ -6,6 +6,7 @@
 package modelo;
 
 import excepciones.MyException;
+import gestoras.GestoraProyecto;
 import java.util.HashSet;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -19,27 +20,28 @@ import static org.junit.Assert.*;
  * @author tello
  */
 public class ProyectoTest {
-    
+
     private Proyecto instanceP;
     private Story instanceS;
-    
+
     public ProyectoTest() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() throws MyException {
+        GestoraProyecto.inicializa();
         instanceP = new Proyecto("aaaa", "lalala");
         instanceS = new Story("aaa", "24", "lalala");
     }
-    
+
     @After
     public void tearDown() {
     }
@@ -164,5 +166,5 @@ public class ProyectoTest {
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
-    
+
 }
