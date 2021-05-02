@@ -23,6 +23,8 @@ import static org.junit.Assert.*;
  */
 public class GestoraEquipoTest {
 
+    private MiembroEquipo instance;
+    
     public GestoraEquipoTest() {
     }
 
@@ -35,7 +37,9 @@ public class GestoraEquipoTest {
     }
 
     @Before
-    public void setUp() {
+    public void setUp() throws MyException {
+        instance = new MiembroEquipo("1234", "1234");
+        gestoras.GestoraEquipo.addMiembro(instance);
     }
 
     @After
@@ -46,46 +50,97 @@ public class GestoraEquipoTest {
      * Test of addMiembro method, of class GestoraEquipo.
      */
     @Test
-    public void testAddMiembro() {
-        System.out.println("addMiembro");
-        MiembroEquipo mE;
+    public void testAddMiembroNo() {
+        System.out.println("No addMiembro, ya existe id");
+        boolean expResult = false;
+        boolean result = GestoraEquipo.addMiembro(instance);
+        assertEquals(expResult, result);
+    }
+    
+    @Test
+    public void testAddMiembroSi() {
+        System.out.println("Si addMiembro nuevo");
         try {
-            mE = new MiembroEquipo("1234", "1234");
-            boolean expResult = false;
-            boolean result = GestoraEquipo.addMiembro(mE);
-            assertNotEquals(expResult, result);
-
+            instance = new MiembroEquipo("9876", "1234");
         } catch (MyException ex) {
-            fail("¡¡¡El intento de añadir un miembro falló!!!");
+            System.out.println("--AddSi-- " + ex.getMessage());
         }
-
+        assertEquals(true, GestoraEquipo.addMiembro(instance));
+    }
+    
+    @Test
+    public void testAddMiembroNoPass() {
+        System.out.println("No addMiembro password null");
+        try {
+            instance = new MiembroEquipo("1234", null);
+        } catch (MyException ex) {
+            System.out.println("--AddNoPass-- " + ex.getMessage());
+        }
+        assertEquals(false, GestoraEquipo.addMiembro(instance));
+    }
+    
+    @Test
+    public void testAddMiembroNoId() {
+        System.out.println("No addMiembro nick null");
+        try { 
+            instance = new MiembroEquipo(null, "1234");
+        } catch (MyException ex) {
+            System.out.println("--AddNoId-- " + ex.getMessage());
+        }
+        assertEquals(false, GestoraEquipo.addMiembro(instance));
     }
 
     /**
      * Test of borrarMiembroCodigo method, of class GestoraEquipo.
      */
     @Test
-    public void testBorrarMiembroCodigo() {
-        System.out.println("borrarMiembroCodigo");
-        String codigo = "";
+    public void testBorrarMiembroCodigoSi() {
+        System.out.println("Si borrarMiembroCodigo");
+        String codigo = "1234";
+        boolean expResult = true;
+        boolean result = GestoraEquipo.borrarMiembroCodigo(codigo);
+        assertEquals(expResult, result);
+    }
+    @Test
+    public void testBorrarMiembroCodigoNo() {
+        System.out.println("No BorrarMiembro codigo no existente");
+        String codigo = "4567";
         boolean expResult = false;
         boolean result = GestoraEquipo.borrarMiembroCodigo(codigo);
         assertEquals(expResult, result);
-        //fail("¡¡¡El intento de borrar un miembro falló!!!");
     }
 
     /**
      * Test of loguearMiembro method, of class GestoraEquipo.
      */
     @Test
-    public void testLoguearMiembro() {
-        System.out.println("loguearMiembro");
-        String nick = "";
-        String password = "";
+    public void testLoguearMiembroSi() {
+        System.out.println("Si loguearMiembro");
+        String nick = "1234";
+        String password = "1234";
+        boolean expResult = true;
+        boolean result = GestoraEquipo.loguearMiembro(nick, password);
+        assertEquals(expResult, result);
+    }
+    @Test
+    public void testLoguearMiembroNoNick() {
+        System.out.println("No loguearMiembro nick no existe o null");
+        String nick = "6666";
+        String password = "1234";
         boolean expResult = false;
         boolean result = GestoraEquipo.loguearMiembro(nick, password);
         assertEquals(expResult, result);
-        //fail("¡¡¡Los datos establecidos para añadir nuevo miembro no han sido aceptados!!!");
+        assertEquals(expResult, GestoraEquipo.loguearMiembro(null, password));
+    }
+    @Test
+    public void testLoguearMiembroNoPass() {
+        System.out.println("No loguearMiembro password no coincide o null");
+        String nick = "1234";
+        String password = "0000";
+        boolean expResult = false;
+        boolean result = GestoraEquipo.loguearMiembro(nick, password);
+        assertEquals(expResult, result);
+        assertEquals(expResult, GestoraEquipo.loguearMiembro(nick, null));
     }
 
 }
