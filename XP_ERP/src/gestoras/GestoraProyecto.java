@@ -7,7 +7,7 @@ import modelo.Proyecto;
 /*EQUIPO B*/
 public class GestoraProyecto {
     
-    private static HashSet<Proyecto> listaProyectos;
+    private static HashSet<Proyecto> listaProyectos = new HashSet<>();
     
     public static void inicializa(){
         listaProyectos = new HashSet<>();

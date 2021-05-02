@@ -37,7 +37,7 @@ public class ProyectoTest {
 
     @Before
     public void setUp() throws MyException {
-        GestoraProyecto.inicializa();
+        
         instanceP = new Proyecto("aaaa", "lalala");
         instanceS = new Story("aaa", "24", "lalala");
     }

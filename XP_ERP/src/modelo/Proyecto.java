@@ -12,7 +12,7 @@ public class Proyecto {
     private int idProyecto;
     private String nombreProyecto;
     private String descripcion;
-    private HashSet<Story> listaStories;
+    private HashSet<Story> listaStories = new HashSet<>();
     private final String[] ESTADOS = {"enCurso", "archivado"};
     private String estadoProyecto;
 
