@@ -22,7 +22,6 @@ import static org.junit.Assert.*;
 public class ProyectoTest {
 
     private Proyecto instanceP;
-    private Story instanceS;
 
     public ProyectoTest() {
     }
@@ -39,7 +38,6 @@ public class ProyectoTest {
     public void setUp() throws MyException {
         
         instanceP = new Proyecto("aaaa", "lalala");
-        instanceS = new Story("aaa", "24", "lalala");
     }
 
     @After
