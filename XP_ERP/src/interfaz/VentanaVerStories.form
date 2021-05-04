@@ -59,7 +59,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="361" max="-2" attributes="0"/>
-                  <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                  <Component id="etiquetaNombreProyecto" min="-2" max="-2" attributes="0"/>
                   <EmptySpace pref="405" max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -68,14 +68,14 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
-                  <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                  <Component id="etiquetaNombreProyecto" min="-2" max="-2" attributes="0"/>
                   <EmptySpace pref="26" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="jLabel3">
+        <Component class="javax.swing.JLabel" name="etiquetaNombreProyecto">
           <Properties>
             <Property name="text" type="java.lang.String" value="Nomnbre de Proyecto"/>
           </Properties>
@@ -91,11 +91,21 @@
                   <Component id="jScrollPane1" min="-2" pref="616" max="-2" attributes="0"/>
                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
               </Group>
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="160" max="-2" attributes="0"/>
+                  <Component id="botonConfirmaAniadirModificarStory" max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+              </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="jScrollPane1" alignment="0" pref="0" max="32767" attributes="0"/>
+              <Group type="102" alignment="0" attributes="0">
+                  <Component id="jScrollPane1" min="-2" pref="200" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
+                  <Component id="botonConfirmaAniadirModificarStory" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+              </Group>
           </Group>
         </DimensionLayout>
       </Layout>
@@ -123,6 +133,15 @@
             </Component>
           </SubComponents>
         </Container>
+        <Component class="javax.swing.JButton" name="botonConfirmaAniadirModificarStory">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Confirma A&#xf1;adir Story"/>
+            <Property name="actionCommand" type="java.lang.String" value="Confirma A&#xf1;adir/Modificar Story"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonConfirmaAniadirModificarStoryActionPerformed"/>
+          </Events>
+        </Component>
       </SubComponents>
     </Container>
     <Container class="javax.swing.JPanel" name="jPanel3">
@@ -134,7 +153,6 @@
               <Component id="comboMiembroB" max="32767" attributes="0"/>
               <Component id="etiqueta_MiembroB" alignment="0" max="32767" attributes="0"/>
               <Component id="etiqueta_MiembroA" alignment="0" max="32767" attributes="0"/>
-              <Component id="botonConfirmaAniadirModificarStory" alignment="0" max="32767" attributes="0"/>
               <Component id="etiqueta_horasEstimadas" alignment="0" max="32767" attributes="0"/>
               <Component id="etiqueta_HorasFinales" alignment="0" max="32767" attributes="0"/>
               <Component id="campoHorasEstimadas" alignment="0" max="32767" attributes="0"/>
@@ -172,9 +190,7 @@
                   <Component id="etiqueta_MiembroB" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="comboMiembroB" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="botonConfirmaAniadirModificarStory" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="11" max="32767" attributes="0"/>
+                  <EmptySpace pref="52" max="32767" attributes="0"/>
                   <Component id="botonCancelaCambios" min="-2" max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -216,15 +232,6 @@
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="text" type="java.lang.String" value="Miembro A"/>
           </Properties>
-        </Component>
-        <Component class="javax.swing.JButton" name="botonConfirmaAniadirModificarStory">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Confirma A&#xf1;adir Story"/>
-            <Property name="actionCommand" type="java.lang.String" value="Confirma A&#xf1;adir/Modificar Story"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonConfirmaAniadirModificarStoryActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="etiqueta_horasEstimadas">
           <Properties>

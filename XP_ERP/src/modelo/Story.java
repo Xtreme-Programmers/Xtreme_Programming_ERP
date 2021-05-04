@@ -131,8 +131,8 @@ public class Story {
 
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 61 * hash + Objects.hashCode(this.titulo);
+        int hash = 7;
+        hash = 41 * hash + Objects.hashCode(this.titulo);
         return hash;
     }
 

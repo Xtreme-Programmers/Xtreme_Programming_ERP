@@ -10,8 +10,6 @@ import gestoras.GestoraProyecto;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.util.HashSet;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -22,11 +20,12 @@ import modelo.Proyecto;
  *
  * @author ryano
  */
-public class VentanaVerProyectos extends javax.swing.JFrame implements WindowListener, ListSelectionListener{
+public class VentanaVerProyectos extends javax.swing.JFrame implements WindowListener, ListSelectionListener {
 
     private final Main VENTANA_MAIN;
     private DefaultTableModel modeloTablaEnCurso;
     private DefaultTableModel modeloTablaArchivado;
+
     /**
      * Creates new form VentanaVerProyectos
      */
@@ -35,7 +34,7 @@ public class VentanaVerProyectos extends javax.swing.JFrame implements WindowLis
         initComponents();
         this.VENTANA_MAIN = v;
         modeloListenerTablas();
-        
+
         rellenaTablas();
     }
 
@@ -326,7 +325,7 @@ public class VentanaVerProyectos extends javax.swing.JFrame implements WindowLis
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVolverActionPerformed
-         volver();
+        volver();
     }//GEN-LAST:event_botonVolverActionPerformed
 
     private void botonVerStoriesEnCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVerStoriesEnCursoActionPerformed
@@ -439,7 +438,7 @@ public class VentanaVerProyectos extends javax.swing.JFrame implements WindowLis
 
     @Override
     public void windowClosed(WindowEvent we) {
-         volver();
+        volver();
     }
 
     @Override
@@ -465,7 +464,7 @@ public class VentanaVerProyectos extends javax.swing.JFrame implements WindowLis
 
     private void rellenaTablas() {
         HashSet<Proyecto> listaProyectos = GestoraProyecto.getListaProyectos();
-        
+
         String filaTabla[] = new String[3];
         for (Proyecto p : listaProyectos) {
             filaTabla[0] = p.getIdProyecto() + "";
@@ -478,7 +477,7 @@ public class VentanaVerProyectos extends javax.swing.JFrame implements WindowLis
             }
         }
     }
-    
+
     private void limpiaTablas() {
         modeloTablaArchivado.setNumRows(0);
         modeloTablaEnCurso.setNumRows(0);
@@ -500,7 +499,7 @@ public class VentanaVerProyectos extends javax.swing.JFrame implements WindowLis
         }
         return null;
     }
-    
+
     private Proyecto seleccionaEnCurso() {
         try {
             int fila = tablaEnCurso.getSelectedRow();
