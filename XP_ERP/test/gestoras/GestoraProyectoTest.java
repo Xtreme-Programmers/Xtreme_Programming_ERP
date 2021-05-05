@@ -116,7 +116,7 @@ public class GestoraProyectoTest {
     @Test
     public void testGetNumProyectos() {
         System.out.println("Si getNumProyectos");
-        int expResult = 6;
+        int expResult = 1;
         int result = GestoraProyecto.getNumProyectos();
         assertEquals(expResult, result);
     }
