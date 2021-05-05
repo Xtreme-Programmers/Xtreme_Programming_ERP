@@ -10,8 +10,6 @@ import gestoras.GestoraEquipo;
 import gestoras.GestoraProyecto;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import modelo.MiembroEquipo;
@@ -92,6 +90,12 @@ public class Main extends javax.swing.JFrame implements WindowListener{
         etiquetaNombre.setText("Nombre de usuario:");
 
         etiquetaPassw.setText("Contraseña:");
+
+        textoNombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textoNombreActionPerformed(evt);
+            }
+        });
 
         botonLogin.setText("LOGIN");
         botonLogin.addActionListener(new java.awt.event.ActionListener() {
@@ -254,6 +258,10 @@ public class Main extends javax.swing.JFrame implements WindowListener{
         vvp.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_botonVerProActionPerformed
+
+    private void textoNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textoNombreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textoNombreActionPerformed
 
     public void estadoInicial(){
         textoNombre.setEnabled(true);

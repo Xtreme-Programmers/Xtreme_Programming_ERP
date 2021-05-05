@@ -5,16 +5,24 @@
  */
 package interfaz;
 
+import excepciones.MyException;
+import gestoras.GestoraEquipo;
+import java.awt.event.KeyEvent;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import modelo.MiembroEquipo;
 
 /**
  *
  * @author tello
  */
-public class VentanaCreaUsuario extends javax.swing.JFrame implements WindowListener{
+public class VentanaCreaUsuario extends javax.swing.JFrame implements WindowListener {
 
     private final Main ventanaMain;
+
     /**
      * Creates new form VentanaCreaUsuario
      */
@@ -80,6 +88,29 @@ public class VentanaCreaUsuario extends javax.swing.JFrame implements WindowList
         });
 
         botonAlta.setText("CREAR USUARIO");
+        botonAlta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonAltaActionPerformed(evt);
+            }
+        });
+
+        textoNombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textoNombreActionPerformed(evt);
+            }
+        });
+
+        textoPassw.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textoPasswActionPerformed(evt);
+            }
+        });
+
+        textoRepPassw.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textoRepPasswActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout contenedorBotonesLayout = new javax.swing.GroupLayout(contenedorBotones);
         contenedorBotones.setLayout(contenedorBotonesLayout);
@@ -161,7 +192,45 @@ public class VentanaCreaUsuario extends javax.swing.JFrame implements WindowList
         ventanaMain.setVisible(true);
     }//GEN-LAST:event_botonVolverActionPerformed
 
-    
+    private void textoNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textoNombreActionPerformed
+        evt.setSource((char) KeyEvent.VK_CLEAR);
+        textoPassw.requestFocus();
+    }//GEN-LAST:event_textoNombreActionPerformed
+
+    private void textoPasswActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textoPasswActionPerformed
+        evt.setSource((char) KeyEvent.VK_CLEAR);
+        textoRepPassw.requestFocus();
+    }//GEN-LAST:event_textoPasswActionPerformed
+
+    private void textoRepPasswActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textoRepPasswActionPerformed
+        evt.setSource((char) KeyEvent.VK_CLEAR);
+        botonAlta.requestFocus();
+    }//GEN-LAST:event_textoRepPasswActionPerformed
+
+    private void botonAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAltaActionPerformed
+        String nombre = textoNombre.getText();
+        String pass = new String(textoPassw.getPassword());
+        String pass2 = new String(textoRepPassw.getPassword());
+
+        if (!pass.equals(pass2)) {
+            JOptionPane.showMessageDialog(this, "Las contraseñas no coinciden");
+        } else {
+            try {
+                MiembroEquipo m = new MiembroEquipo(nombre, pass);
+                if (GestoraEquipo.addMiembro(m)) {
+                    JOptionPane.showMessageDialog(this, "Usuario dado de alta capitan");
+                    limpiarFormulario();
+                } else {
+                    JOptionPane.showMessageDialog(this, "Ya existe el usuario");
+                }
+
+            } catch (MyException ex) {
+                JOptionPane.showMessageDialog(this, ex.getMessage());
+            }
+        }
+    }//GEN-LAST:event_botonAltaActionPerformed
+
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonAlta;
     private javax.swing.JButton botonVolver;
@@ -184,7 +253,7 @@ public class VentanaCreaUsuario extends javax.swing.JFrame implements WindowList
     @Override
     public void windowClosing(WindowEvent we) {
         volver();
-        
+
     }
 
     @Override
@@ -211,5 +280,11 @@ public class VentanaCreaUsuario extends javax.swing.JFrame implements WindowList
     private void volver() {
         this.dispose();
         ventanaMain.setVisible(true);
+    }
+
+    private void limpiarFormulario() {
+        textoNombre.setText("");
+        textoPassw.setText("");
+        textoRepPassw.setText("");
     }
 }

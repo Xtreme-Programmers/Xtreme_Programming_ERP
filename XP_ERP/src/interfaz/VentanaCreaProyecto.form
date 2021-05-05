@@ -153,8 +153,14 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="CREAR PROYECTO"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonAltaActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="textoNombre">
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textoNombreActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="etiquetaDuracion">
               <Properties>
@@ -162,6 +168,9 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="textoDuracion">
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textoDuracionActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>

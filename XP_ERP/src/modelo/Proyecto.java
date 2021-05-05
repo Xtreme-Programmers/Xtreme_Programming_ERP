@@ -1,14 +1,17 @@
 package modelo;
+
 /*EQUIPO B*/
 import excepciones.MyException;
 import gestoras.GestoraProyecto;
 import java.util.HashSet;
+import java.util.Objects;
 
 /**
  *
  * @author ryano
  */
 public class Proyecto {
+
     private int idProyecto;
     private String nombreProyecto;
     private String descripcion;
@@ -23,7 +26,7 @@ public class Proyecto {
         setDescripcion(descripción);
         setEstadoProyecto("enCurso");
     }
-    
+
     public void aniadeStory(Story s) throws MyException {
         if (s != null) {
             if (!listaStories.add(s)) {
@@ -51,7 +54,7 @@ public class Proyecto {
     public void setEstadoProyecto(String estadoProyecto) throws MyException {
         if (estadoProyecto == null || estadoProyecto.equals(null)) {
             throw new MyException("El estado de proyecto está vacío");
-        } 
+        }
         boolean esValido = false;
         for (int i = 0; i < ESTADOS.length; i++) {
             if (estadoProyecto.equals(ESTADOS[i])) {
@@ -97,7 +100,30 @@ public class Proyecto {
         }
         throw new MyException("No se encuentra Story");
     }
-    
-    
-    
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 19 * hash + Objects.hashCode(this.nombreProyecto);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Proyecto other = (Proyecto) obj;
+        if (!Objects.equals(this.nombreProyecto, other.nombreProyecto)) {
+            return false;
+        }
+        return true;
+    }
+
 }

@@ -1,4 +1,5 @@
 package modelo;
+
 /*EQUIPO C*/
 import excepciones.MyException;
 import java.util.HashSet;
@@ -17,8 +18,6 @@ public class MiembroEquipo {
         setPass(pass);
     }
 
-    
-    
     // Getters & Setters
     public String getIdMiembro() {
         return idMiembro;
@@ -120,7 +119,5 @@ public class MiembroEquipo {
     public String toString() {
         return "MiembroEquipo ID = " + idMiembro;
     }
-    
-    
 
 }

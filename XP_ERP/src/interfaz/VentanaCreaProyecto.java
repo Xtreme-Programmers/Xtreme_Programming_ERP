@@ -5,16 +5,24 @@
  */
 package interfaz;
 
+import excepciones.MyException;
+import gestoras.GestoraProyecto;
+import java.awt.event.KeyEvent;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import modelo.Proyecto;
 
 /**
  *
  * @author tello
  */
-public class VentanaCreaProyecto extends javax.swing.JFrame implements WindowListener{
+public class VentanaCreaProyecto extends javax.swing.JFrame implements WindowListener {
 
     private final Main ventanaMain;
+
     /**
      * Creates new form VentanaCreaUsuario
      */
@@ -74,8 +82,25 @@ public class VentanaCreaProyecto extends javax.swing.JFrame implements WindowLis
         });
 
         botonAlta.setText("CREAR PROYECTO");
+        botonAlta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonAltaActionPerformed(evt);
+            }
+        });
+
+        textoNombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textoNombreActionPerformed(evt);
+            }
+        });
 
         etiquetaDuracion.setText("Asigna la duración del Proyecto:");
+
+        textoDuracion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textoDuracionActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout contenedorBotonesLayout = new javax.swing.GroupLayout(contenedorBotones);
         contenedorBotones.setLayout(contenedorBotonesLayout);
@@ -151,7 +176,34 @@ public class VentanaCreaProyecto extends javax.swing.JFrame implements WindowLis
         ventanaMain.setVisible(true);
     }//GEN-LAST:event_botonVolverActionPerformed
 
-    
+    private void textoNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textoNombreActionPerformed
+        // Esto nos servira para limpiar la seleccion actual y pasarle el foco al campo contraseña una vez se pulse enter  
+        evt.setSource((char) KeyEvent.VK_CLEAR);
+        textoDuracion.requestFocus();
+    }//GEN-LAST:event_textoNombreActionPerformed
+
+    private void textoDuracionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textoDuracionActionPerformed
+        evt.setSource((char) KeyEvent.VK_CLEAR);
+        botonAlta.requestFocus();
+    }//GEN-LAST:event_textoDuracionActionPerformed
+
+    private void botonAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAltaActionPerformed
+        String nombreProyecto = textoNombre.getText();
+        String duracionProyecto = textoDuracion.getText();
+        try {
+            Proyecto p = new Proyecto(nombreProyecto, duracionProyecto);
+            if (GestoraProyecto.addProyecto(p)) {
+                JOptionPane.showMessageDialog(this, "Proyecto creado mi capitan");
+                limpiarFormulario();
+            } else {
+                JOptionPane.showMessageDialog(this, "Proyecto no creado mi capitan, ya existe un proyecto con ese nombre, mi capitan");
+            }
+        } catch (MyException ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage());
+        }
+    }//GEN-LAST:event_botonAltaActionPerformed
+
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonAlta;
     private javax.swing.JButton botonVolver;
@@ -195,5 +247,10 @@ public class VentanaCreaProyecto extends javax.swing.JFrame implements WindowLis
 
     @Override
     public void windowDeactivated(WindowEvent we) {
+    }
+
+    private void limpiarFormulario() {
+        textoDuracion.setText("");
+        textoNombre.setText("");
     }
 }
