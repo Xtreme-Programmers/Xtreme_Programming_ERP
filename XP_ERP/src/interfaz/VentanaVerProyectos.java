@@ -84,6 +84,9 @@ public class VentanaVerProyectos extends javax.swing.JFrame implements WindowLis
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel1.setFont(new java.awt.Font("Trebuchet MS", 1, 36)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Vista de Proyectos");
 
@@ -100,9 +103,12 @@ public class VentanaVerProyectos extends javax.swing.JFrame implements WindowLis
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+
+        tablaArchivados.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         tablaArchivados.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -128,9 +134,12 @@ public class VentanaVerProyectos extends javax.swing.JFrame implements WindowLis
         });
         jScrollPane2.setViewportView(tablaArchivados);
 
+        jLabel2.setFont(new java.awt.Font("Trebuchet MS", 0, 18)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Proyectos Archivados");
 
+        botonEliminaProyectoArchivado.setBackground(new java.awt.Color(0, 0, 0));
+        botonEliminaProyectoArchivado.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         botonEliminaProyectoArchivado.setText("Elimina Proyecto");
         botonEliminaProyectoArchivado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -138,6 +147,8 @@ public class VentanaVerProyectos extends javax.swing.JFrame implements WindowLis
             }
         });
 
+        botonVerStoriesArchivados.setBackground(new java.awt.Color(0, 0, 0));
+        botonVerStoriesArchivados.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         botonVerStoriesArchivados.setText("Ver Stories de Proyecto");
         botonVerStoriesArchivados.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -169,9 +180,12 @@ public class VentanaVerProyectos extends javax.swing.JFrame implements WindowLis
                 .addComponent(botonVerStoriesArchivados)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(botonEliminaProyectoArchivado)
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
+
+        tablaEnCurso.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         tablaEnCurso.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -190,9 +204,12 @@ public class VentanaVerProyectos extends javax.swing.JFrame implements WindowLis
         });
         jScrollPane1.setViewportView(tablaEnCurso);
 
+        jLabel3.setFont(new java.awt.Font("Trebuchet MS", 0, 18)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Proyectos en Curso");
 
+        botonEliminaProyectoEnCurso.setBackground(new java.awt.Color(0, 0, 0));
+        botonEliminaProyectoEnCurso.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         botonEliminaProyectoEnCurso.setText("Elimina Proyecto");
         botonEliminaProyectoEnCurso.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -200,6 +217,8 @@ public class VentanaVerProyectos extends javax.swing.JFrame implements WindowLis
             }
         });
 
+        botonVerStoriesEnCurso.setBackground(new java.awt.Color(0, 0, 0));
+        botonVerStoriesEnCurso.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         botonVerStoriesEnCurso.setText("Ver Stories de Proyecto");
         botonVerStoriesEnCurso.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -233,14 +252,20 @@ public class VentanaVerProyectos extends javax.swing.JFrame implements WindowLis
                 .addGap(24, 24, 24))
         );
 
-        botonVolver.setText("Volver");
+        jPanel5.setBackground(new java.awt.Color(255, 255, 255));
+
+        botonVolver.setBackground(new java.awt.Color(0, 0, 0));
+        botonVolver.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        botonVolver.setText("VOLVER");
         botonVolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonVolverActionPerformed(evt);
             }
         });
 
-        botonNuevoProyecto.setText("Nuevo Proyecto");
+        botonNuevoProyecto.setBackground(new java.awt.Color(0, 0, 0));
+        botonNuevoProyecto.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        botonNuevoProyecto.setText("NUEVO PROYECTO");
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -249,19 +274,22 @@ public class VentanaVerProyectos extends javax.swing.JFrame implements WindowLis
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(botonNuevoProyecto, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(157, 157, 157)
                 .addComponent(botonVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(257, 257, 257))
+                .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(botonNuevoProyecto)
-                    .addComponent(botonVolver))
-                .addGap(51, 51, 51))
+                .addContainerGap(23, Short.MAX_VALUE)
+                .addComponent(botonVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(21, 21, 21))
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addComponent(botonNuevoProyecto, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
+
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
         botonCambiaArchivado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/flecha_Dch.png"))); // NOI18N
         botonCambiaArchivado.addActionListener(new java.awt.event.ActionListener() {
@@ -318,7 +346,7 @@ public class VentanaVerProyectos extends javax.swing.JFrame implements WindowLis
                     .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();

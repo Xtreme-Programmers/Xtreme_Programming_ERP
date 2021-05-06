@@ -53,27 +53,37 @@ public class VentanaCreaProyecto extends javax.swing.JFrame implements WindowLis
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
-        etiquetaLogo.setText("NOMBRE MOLON");
+        contenedor.setBackground(new java.awt.Color(255, 255, 255));
+
+        contenedorLogo.setBackground(new java.awt.Color(255, 255, 255));
+
+        etiquetaLogo.setFont(new java.awt.Font("Trebuchet MS", 1, 48)); // NOI18N
+        etiquetaLogo.setText("NOMBRE MOLÓN");
 
         javax.swing.GroupLayout contenedorLogoLayout = new javax.swing.GroupLayout(contenedorLogo);
         contenedorLogo.setLayout(contenedorLogoLayout);
         contenedorLogoLayout.setHorizontalGroup(
             contenedorLogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(contenedorLogoLayout.createSequentialGroup()
-                .addGap(158, 158, 158)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, contenedorLogoLayout.createSequentialGroup()
+                .addContainerGap(183, Short.MAX_VALUE)
                 .addComponent(etiquetaLogo)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(171, 171, 171))
         );
         contenedorLogoLayout.setVerticalGroup(
             contenedorLogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(contenedorLogoLayout.createSequentialGroup()
-                .addGap(24, 24, 24)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, contenedorLogoLayout.createSequentialGroup()
+                .addContainerGap(40, Short.MAX_VALUE)
                 .addComponent(etiquetaLogo)
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
+        contenedorBotones.setBackground(new java.awt.Color(255, 255, 255));
+
+        etiquetaNombre.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         etiquetaNombre.setText("Nombre del Proyecto:");
 
+        botonVolver.setBackground(new java.awt.Color(0, 0, 0));
+        botonVolver.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
         botonVolver.setText("VOLVER");
         botonVolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -81,6 +91,8 @@ public class VentanaCreaProyecto extends javax.swing.JFrame implements WindowLis
             }
         });
 
+        botonAlta.setBackground(new java.awt.Color(0, 0, 0));
+        botonAlta.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
         botonAlta.setText("CREAR PROYECTO");
         botonAlta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -88,14 +100,17 @@ public class VentanaCreaProyecto extends javax.swing.JFrame implements WindowLis
             }
         });
 
+        textoNombre.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         textoNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textoNombreActionPerformed(evt);
             }
         });
 
+        etiquetaDuracion.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         etiquetaDuracion.setText("Asigna la duración del Proyecto:");
 
+        textoDuracion.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         textoDuracion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textoDuracionActionPerformed(evt);
@@ -106,27 +121,27 @@ public class VentanaCreaProyecto extends javax.swing.JFrame implements WindowLis
         contenedorBotones.setLayout(contenedorBotonesLayout);
         contenedorBotonesLayout.setHorizontalGroup(
             contenedorBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(contenedorBotonesLayout.createSequentialGroup()
-                .addGap(17, 17, 17)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, contenedorBotonesLayout.createSequentialGroup()
                 .addGroup(contenedorBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(etiquetaDuracion)
-                    .addComponent(botonVolver)
-                    .addComponent(etiquetaNombre))
-                .addGap(58, 58, 58)
-                .addGroup(contenedorBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(contenedorBotonesLayout.createSequentialGroup()
-                        .addComponent(botonAlta, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(botonVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(contenedorBotonesLayout.createSequentialGroup()
+                        .addGap(17, 17, 17)
+                        .addGroup(contenedorBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(etiquetaDuracion)
+                            .addComponent(etiquetaNombre))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(contenedorBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(textoDuracion)
-                            .addComponent(textoNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE))
-                        .addGap(89, 89, 89))))
+                            .addComponent(textoNombre)
+                            .addComponent(botonAlta, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addGap(21, 21, 21))
         );
         contenedorBotonesLayout.setVerticalGroup(
             contenedorBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(contenedorBotonesLayout.createSequentialGroup()
-                .addGap(52, 52, 52)
+                .addGap(34, 34, 34)
                 .addGroup(contenedorBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(textoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(etiquetaNombre))
@@ -134,11 +149,11 @@ public class VentanaCreaProyecto extends javax.swing.JFrame implements WindowLis
                 .addGroup(contenedorBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(textoDuracion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(etiquetaDuracion))
-                .addGap(31, 31, 31)
-                .addGroup(contenedorBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(botonVolver)
-                    .addComponent(botonAlta))
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(botonAlta, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(botonVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(37, 37, 37))
         );
 
         javax.swing.GroupLayout contenedorLayout = new javax.swing.GroupLayout(contenedor);
