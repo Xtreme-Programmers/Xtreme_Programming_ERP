@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package interfaz;
 
 import excepciones.MyException;
@@ -10,8 +5,6 @@ import gestoras.GestoraProyecto;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import modelo.Proyecto;
 
@@ -50,6 +43,8 @@ public class VentanaCreaProyecto extends javax.swing.JFrame implements WindowLis
         textoNombre = new javax.swing.JTextField();
         etiquetaDuracion = new javax.swing.JLabel();
         textoDuracion = new javax.swing.JTextField();
+        loco = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
@@ -65,9 +60,9 @@ public class VentanaCreaProyecto extends javax.swing.JFrame implements WindowLis
         contenedorLogoLayout.setHorizontalGroup(
             contenedorLogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, contenedorLogoLayout.createSequentialGroup()
-                .addContainerGap(183, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(etiquetaLogo)
-                .addGap(171, 171, 171))
+                .addGap(225, 225, 225))
         );
         contenedorLogoLayout.setVerticalGroup(
             contenedorLogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -117,25 +112,45 @@ public class VentanaCreaProyecto extends javax.swing.JFrame implements WindowLis
             }
         });
 
+        loco.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/loco.gif"))); // NOI18N
+
+        javax.swing.GroupLayout locoLayout = new javax.swing.GroupLayout(loco);
+        loco.setLayout(locoLayout);
+        locoLayout.setHorizontalGroup(
+            locoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(locoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        locoLayout.setVerticalGroup(
+            locoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(locoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout contenedorBotonesLayout = new javax.swing.GroupLayout(contenedorBotones);
         contenedorBotones.setLayout(contenedorBotonesLayout);
         contenedorBotonesLayout.setHorizontalGroup(
             contenedorBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, contenedorBotonesLayout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(contenedorBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(etiquetaDuracion)
+                    .addComponent(etiquetaNombre)
+                    .addComponent(loco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(contenedorBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(textoDuracion, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(textoNombre, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(botonAlta, javax.swing.GroupLayout.DEFAULT_SIZE, 548, Short.MAX_VALUE)
                     .addGroup(contenedorBotonesLayout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(botonVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(contenedorBotonesLayout.createSequentialGroup()
-                        .addGap(17, 17, 17)
-                        .addGroup(contenedorBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(etiquetaDuracion)
-                            .addComponent(etiquetaNombre))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(contenedorBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(textoDuracion)
-                            .addComponent(textoNombre)
-                            .addComponent(botonAlta, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(botonVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(21, 21, 21))
         );
         contenedorBotonesLayout.setVerticalGroup(
@@ -150,10 +165,15 @@ public class VentanaCreaProyecto extends javax.swing.JFrame implements WindowLis
                     .addComponent(textoDuracion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(etiquetaDuracion))
                 .addGap(18, 18, 18)
-                .addComponent(botonAlta, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(botonVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37))
+                .addGroup(contenedorBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(contenedorBotonesLayout.createSequentialGroup()
+                        .addComponent(botonAlta, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(botonVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(contenedorBotonesLayout.createSequentialGroup()
+                        .addComponent(loco, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())))
         );
 
         javax.swing.GroupLayout contenedorLayout = new javax.swing.GroupLayout(contenedor);
@@ -228,6 +248,8 @@ public class VentanaCreaProyecto extends javax.swing.JFrame implements WindowLis
     private javax.swing.JLabel etiquetaDuracion;
     private javax.swing.JLabel etiquetaLogo;
     private javax.swing.JLabel etiquetaNombre;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel loco;
     private javax.swing.JTextField textoDuracion;
     private javax.swing.JTextField textoNombre;
     // End of variables declaration//GEN-END:variables

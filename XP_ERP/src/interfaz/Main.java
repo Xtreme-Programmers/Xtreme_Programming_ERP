@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package interfaz;
 
 import excepciones.MyException;
@@ -20,7 +15,7 @@ import modelo.Story;
  *
  * @author tello
  */
-public class Main extends javax.swing.JFrame implements WindowListener{
+public class Main extends javax.swing.JFrame implements WindowListener {
 
     /**
      * Creates new form Main
@@ -293,27 +288,27 @@ public class Main extends javax.swing.JFrame implements WindowListener{
         // TODO add your handling code here:
     }//GEN-LAST:event_textoNombreActionPerformed
 
-    public void estadoInicial(){
+    public void estadoInicial() {
         textoNombre.setEnabled(true);
         textoPassw.setEnabled(true);
         botonLogin.setEnabled(true);
-        
+
         botonAlta.setEnabled(false);
         botonCrearPro.setEnabled(false);
         botonVerPro.setEnabled(false);
-        
+
     }
-    
-    public void estadoMenu(){
+
+    public void estadoMenu() {
         textoNombre.setEnabled(false);
         textoPassw.setEnabled(false);
         botonLogin.setEnabled(false);
-        
+
         botonAlta.setEnabled(true);
         botonCrearPro.setEnabled(true);
         botonVerPro.setEnabled(true);
     }
-    
+
     /**
      * @param args the command line arguments
      */
@@ -386,8 +381,10 @@ public class Main extends javax.swing.JFrame implements WindowListener{
     }
 
     /**
-     * Método para navegar a las otras ventanas sin loguearse que usaremos durante las pruebas
-     * @deprecated 
+     * Método para navegar a las otras ventanas sin loguearse que usaremos
+     * durante las pruebas
+     *
+     * @deprecated
      */
     private void estadoInicialPruebas() {
         botonAlta.setEnabled(true);
@@ -454,7 +451,7 @@ public class Main extends javax.swing.JFrame implements WindowListener{
             s5.setMiembroEquipo(m5, m13);
             s6.setMiembroEquipo(m6, m14);
             s7.setMiembroEquipo(m7, m15);
-            s8.setMiembroEquipo(m8, m16);  
+            s8.setMiembroEquipo(m8, m16);
             Proyecto p1 = new Proyecto("Aplicación Tin-Tinder", "Es una app que le da mil vueltas a Tinder");
             p1.setEstadoProyecto("enCurso");
             p1.aniadeStory(s1);
@@ -499,7 +496,7 @@ public class Main extends javax.swing.JFrame implements WindowListener{
             p4.aniadeStory(s7);
             p4.aniadeStory(s8);
             GestoraProyecto.addProyecto(p4);
-            
+
         } catch (MyException ex) {
             Consola.muestraMensaje(ex.getMessage());
         }

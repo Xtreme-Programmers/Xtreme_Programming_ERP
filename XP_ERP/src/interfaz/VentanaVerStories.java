@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package interfaz;
 
 import excepciones.MyException;
@@ -24,7 +19,7 @@ import modelo.Story;
  * @author ryano
  */
 public class VentanaVerStories extends javax.swing.JFrame implements WindowListener, ListSelectionListener {
-    
+
     private VentanaVerProyectos VENTANA_PROYECTOS;
     private DefaultTableModel modeloTablaStories;
     private DefaultComboBoxModel modeloComboA;
@@ -61,51 +56,127 @@ public class VentanaVerStories extends javax.swing.JFrame implements WindowListe
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        contenedorPrincipal = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         etiquetaNombreProyecto = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tablaStories = new javax.swing.JTable();
-        botonConfirmaAniadirModificarStory = new javax.swing.JButton();
-        jPanel3 = new javax.swing.JPanel();
-        comboMiembroA = new javax.swing.JComboBox<>();
-        comboMiembroB = new javax.swing.JComboBox<>();
-        etiqueta_MiembroB = new javax.swing.JLabel();
-        etiqueta_MiembroA = new javax.swing.JLabel();
-        etiqueta_horasEstimadas = new javax.swing.JLabel();
-        etiqueta_HorasFinales = new javax.swing.JLabel();
-        campoHorasEstimadas = new javax.swing.JTextField();
-        campoHorasFinales = new javax.swing.JTextField();
-        campoTitulo = new javax.swing.JTextField();
-        etiqueta_Titulo = new javax.swing.JLabel();
-        etiqueta_Contenido = new javax.swing.JLabel();
-        campoContenido = new javax.swing.JTextField();
-        botonCancelaCambios = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         botonAniadeStory = new javax.swing.JButton();
         botonModificaStory = new javax.swing.JButton();
         botonVolver = new javax.swing.JButton();
+        jPanel3 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tablaStories = new javax.swing.JTable();
+        botonConfirmaAniadirModificarStory = new javax.swing.JButton();
+        contenedorColumna = new javax.swing.JPanel();
+        etiqueta_Titulo = new javax.swing.JLabel();
+        campoTitulo = new javax.swing.JTextField();
+        etiqueta_Contenido = new javax.swing.JLabel();
+        campoContenido = new javax.swing.JTextField();
+        etiqueta_horasEstimadas = new javax.swing.JLabel();
+        campoHorasEstimadas = new javax.swing.JTextField();
+        etiqueta_HorasFinales = new javax.swing.JLabel();
+        campoHorasFinales = new javax.swing.JTextField();
+        etiqueta_MiembroA = new javax.swing.JLabel();
+        comboMiembroA = new javax.swing.JComboBox<>();
+        etiqueta_MiembroB = new javax.swing.JLabel();
+        comboMiembroB = new javax.swing.JComboBox<>();
+        botonCancelaCambios = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
-        etiquetaNombreProyecto.setText("Nomnbre de Proyecto");
+        contenedorPrincipal.setBackground(new java.awt.Color(255, 255, 255));
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+
+        etiquetaNombreProyecto.setFont(new java.awt.Font("Trebuchet MS", 1, 36)); // NOI18N
+        etiquetaNombreProyecto.setText("NOMBRE DEL PROYECTO");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(361, 361, 361)
+                .addGap(172, 172, 172)
                 .addComponent(etiquetaNombreProyecto)
-                .addContainerGap(405, Short.MAX_VALUE))
+                .addContainerGap(133, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(21, 21, 21)
+                .addGap(37, 37, 37)
                 .addComponent(etiquetaNombreProyecto)
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addContainerGap(49, Short.MAX_VALUE))
         );
+
+        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
+
+        botonAniadeStory.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
+        botonAniadeStory.setText("AÑADE STORY");
+        botonAniadeStory.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonAniadeStoryActionPerformed(evt);
+            }
+        });
+
+        botonModificaStory.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
+        botonModificaStory.setText("MODIFICA STORY");
+        botonModificaStory.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonModificaStoryActionPerformed(evt);
+            }
+        });
+
+        botonVolver.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
+        botonVolver.setText("VOLVER");
+        botonVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonVolverActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 833, Short.MAX_VALUE)
+            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel4Layout.createSequentialGroup()
+                    .addGap(9, 9, 9)
+                    .addComponent(botonAniadeStory, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(botonModificaStory, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(27, 27, 27)
+                    .addComponent(botonVolver, javax.swing.GroupLayout.DEFAULT_SIZE, 241, Short.MAX_VALUE)
+                    .addContainerGap()))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 77, Short.MAX_VALUE)
+            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel4Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(botonAniadeStory, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(botonModificaStory, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(botonVolver, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+        );
+
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 544, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 67, Short.MAX_VALUE)
+        );
+
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
         tablaStories.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -125,7 +196,8 @@ public class VentanaVerStories extends javax.swing.JFrame implements WindowListe
         });
         jScrollPane1.setViewportView(tablaStories);
 
-        botonConfirmaAniadirModificarStory.setText("Confirma Añadir Story");
+        botonConfirmaAniadirModificarStory.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
+        botonConfirmaAniadirModificarStory.setText("CONFIRMA AÑADIR STORY");
         botonConfirmaAniadirModificarStory.setActionCommand("Confirma Añadir/Modificar Story");
         botonConfirmaAniadirModificarStory.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -138,73 +210,100 @@ public class VentanaVerStories extends javax.swing.JFrame implements WindowListe
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 616, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(160, 160, 160)
-                .addComponent(botonConfirmaAniadirModificarStory, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(botonConfirmaAniadirModificarStory, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 546, Short.MAX_VALUE))
+                .addGap(0, 21, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(56, 56, 56)
-                .addComponent(botonConfirmaAniadirModificarStory)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, Short.MAX_VALUE)
+                .addComponent(botonConfirmaAniadirModificarStory, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(83, 83, 83))
         );
 
-        comboMiembroA.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ID Miembro A" }));
+        contenedorColumna.setBackground(new java.awt.Color(255, 255, 255));
 
-        comboMiembroB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ID Meimbro B" }));
+        etiqueta_Titulo.setBackground(new java.awt.Color(255, 255, 255));
+        etiqueta_Titulo.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        etiqueta_Titulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        etiqueta_Titulo.setText("Nombre de la Story");
 
-        etiqueta_MiembroB.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        etiqueta_MiembroB.setText("Miembro B");
+        campoTitulo.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
 
-        etiqueta_MiembroA.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        etiqueta_MiembroA.setText("Miembro A");
+        etiqueta_Contenido.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        etiqueta_Contenido.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        etiqueta_Contenido.setText("Contenido de la Story");
 
+        campoContenido.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+
+        etiqueta_horasEstimadas.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         etiqueta_horasEstimadas.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         etiqueta_horasEstimadas.setText("Horas estimadas");
         etiqueta_horasEstimadas.setToolTipText("");
 
+        campoHorasEstimadas.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+
+        etiqueta_HorasFinales.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         etiqueta_HorasFinales.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         etiqueta_HorasFinales.setText("Horas Finales");
 
-        etiqueta_Titulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        etiqueta_Titulo.setText("Nombre de la Story");
+        campoHorasFinales.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
 
-        etiqueta_Contenido.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        etiqueta_Contenido.setText("Contenido de la Story");
+        etiqueta_MiembroA.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        etiqueta_MiembroA.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        etiqueta_MiembroA.setText("Miembro A");
 
-        botonCancelaCambios.setText("Cancelar");
-        botonCancelaCambios.addActionListener(new java.awt.event.ActionListener() {
+        comboMiembroA.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        comboMiembroA.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ID Miembro A" }));
+
+        etiqueta_MiembroB.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        etiqueta_MiembroB.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        etiqueta_MiembroB.setText("Miembro B");
+
+        comboMiembroB.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        comboMiembroB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ID Miembro B" }));
+        comboMiembroB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonCancelaCambiosActionPerformed(evt);
+                comboMiembroBActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(comboMiembroA, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(comboMiembroB, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(etiqueta_MiembroB, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(etiqueta_MiembroA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(etiqueta_horasEstimadas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(etiqueta_HorasFinales, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(campoHorasEstimadas)
-            .addComponent(campoHorasFinales)
-            .addComponent(etiqueta_Titulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(campoTitulo)
-            .addComponent(etiqueta_Contenido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(campoContenido)
-            .addComponent(botonCancelaCambios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        javax.swing.GroupLayout contenedorColumnaLayout = new javax.swing.GroupLayout(contenedorColumna);
+        contenedorColumna.setLayout(contenedorColumnaLayout);
+        contenedorColumnaLayout.setHorizontalGroup(
+            contenedorColumnaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(contenedorColumnaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(contenedorColumnaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(contenedorColumnaLayout.createSequentialGroup()
+                        .addComponent(etiqueta_Contenido, javax.swing.GroupLayout.DEFAULT_SIZE, 231, Short.MAX_VALUE)
+                        .addGap(31, 31, 31))
+                    .addGroup(contenedorColumnaLayout.createSequentialGroup()
+                        .addGroup(contenedorColumnaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(etiqueta_Titulo, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)
+                            .addComponent(campoContenido, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(campoTitulo, javax.swing.GroupLayout.Alignment.LEADING))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+            .addGroup(contenedorColumnaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(contenedorColumnaLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addGroup(contenedorColumnaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(comboMiembroA, 0, 242, Short.MAX_VALUE)
+                        .addComponent(comboMiembroB, 0, 242, Short.MAX_VALUE)
+                        .addComponent(etiqueta_MiembroB, javax.swing.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE)
+                        .addComponent(etiqueta_MiembroA, javax.swing.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE)
+                        .addComponent(campoHorasFinales, javax.swing.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE)
+                        .addComponent(etiqueta_HorasFinales, javax.swing.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE)
+                        .addComponent(campoHorasEstimadas, javax.swing.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE)
+                        .addComponent(etiqueta_horasEstimadas, javax.swing.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE))
+                    .addContainerGap(20, Short.MAX_VALUE)))
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+        contenedorColumnaLayout.setVerticalGroup(
+            contenedorColumnaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(contenedorColumnaLayout.createSequentialGroup()
                 .addComponent(etiqueta_Titulo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(campoTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -212,95 +311,90 @@ public class VentanaVerStories extends javax.swing.JFrame implements WindowListe
                 .addComponent(etiqueta_Contenido)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(campoContenido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(etiqueta_horasEstimadas)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(campoHorasEstimadas, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(etiqueta_HorasFinales)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(campoHorasFinales, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(etiqueta_MiembroA)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(comboMiembroA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(etiqueta_MiembroB)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(comboMiembroB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
-                .addComponent(botonCancelaCambios))
+                .addGap(0, 318, Short.MAX_VALUE))
+            .addGroup(contenedorColumnaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(contenedorColumnaLayout.createSequentialGroup()
+                    .addGap(137, 137, 137)
+                    .addComponent(etiqueta_horasEstimadas)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(campoHorasEstimadas, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(etiqueta_HorasFinales)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(campoHorasFinales, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(18, 18, 18)
+                    .addComponent(etiqueta_MiembroA)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(comboMiembroA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(29, 29, 29)
+                    .addComponent(etiqueta_MiembroB)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(comboMiembroB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(33, Short.MAX_VALUE)))
         );
 
-        botonAniadeStory.setText("Añade Story");
-        botonAniadeStory.addActionListener(new java.awt.event.ActionListener() {
+        botonCancelaCambios.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
+        botonCancelaCambios.setText("CANCELAR");
+        botonCancelaCambios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonAniadeStoryActionPerformed(evt);
+                botonCancelaCambiosActionPerformed(evt);
             }
         });
 
-        botonModificaStory.setText("Modifica Story");
-        botonModificaStory.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonModificaStoryActionPerformed(evt);
-            }
-        });
-
-        botonVolver.setText("Volver");
-        botonVolver.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonVolverActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(56, 56, 56)
-                .addComponent(botonAniadeStory, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(botonModificaStory, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(botonVolver, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(54, 54, 54))
+        javax.swing.GroupLayout contenedorPrincipalLayout = new javax.swing.GroupLayout(contenedorPrincipal);
+        contenedorPrincipal.setLayout(contenedorPrincipalLayout);
+        contenedorPrincipalLayout.setHorizontalGroup(
+            contenedorPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(contenedorPrincipalLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(contenedorPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botonCancelaCambios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(contenedorColumna, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(17, Short.MAX_VALUE))
+            .addGroup(contenedorPrincipalLayout.createSequentialGroup()
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(contenedorPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(contenedorPrincipalLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addGroup(contenedorPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addContainerGap(143, Short.MAX_VALUE)))
         );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(21, Short.MAX_VALUE)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(botonAniadeStory)
-                    .addComponent(botonModificaStory)
-                    .addComponent(botonVolver))
-                .addContainerGap())
+        contenedorPrincipalLayout.setVerticalGroup(
+            contenedorPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(contenedorPrincipalLayout.createSequentialGroup()
+                .addGap(131, 131, 131)
+                .addGroup(contenedorPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(contenedorPrincipalLayout.createSequentialGroup()
+                        .addComponent(botonCancelaCambios, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(contenedorColumna, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(contenedorPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(contenedorPrincipalLayout.createSequentialGroup()
+                    .addGap(5, 5, 5)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(243, Short.MAX_VALUE)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(contenedorPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+            .addComponent(contenedorPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -309,19 +403,19 @@ public class VentanaVerStories extends javax.swing.JFrame implements WindowListe
     private void botonAniadeStoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAniadeStoryActionPerformed
         setPanelAniadeStory(true);
         setBotonesPrincipales(false);
-        botonConfirmaAniadirModificarStory.setText("Añade nueva Story");
+        botonConfirmaAniadirModificarStory.setText("AÑADE NUEVA STORY");
         modoAniadir = true;
     }//GEN-LAST:event_botonAniadeStoryActionPerformed
 
     private void botonModificaStoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonModificaStoryActionPerformed
         setPanelAniadeStory(true);
         setBotonesPrincipales(false);
-        botonConfirmaAniadirModificarStory.setText("Modifica Story seleccionada");
+        botonConfirmaAniadirModificarStory.setText("MODIFICA STORY SELECCIONADA");
         modoAniadir = false;
     }//GEN-LAST:event_botonModificaStoryActionPerformed
 
     private void botonConfirmaAniadirModificarStoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonConfirmaAniadirModificarStoryActionPerformed
-        
+
         if (modoAniadir == true) {
             Story s;
             try {
@@ -364,6 +458,10 @@ public class VentanaVerStories extends javax.swing.JFrame implements WindowListe
         limpiaFormulario();
     }//GEN-LAST:event_botonCancelaCambiosActionPerformed
 
+    private void comboMiembroBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboMiembroBActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboMiembroBActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonAniadeStory;
     private javax.swing.JButton botonCancelaCambios;
@@ -376,6 +474,8 @@ public class VentanaVerStories extends javax.swing.JFrame implements WindowListe
     private javax.swing.JTextField campoTitulo;
     private javax.swing.JComboBox<String> comboMiembroA;
     private javax.swing.JComboBox<String> comboMiembroB;
+    private javax.swing.JPanel contenedorColumna;
+    private javax.swing.JPanel contenedorPrincipal;
     private javax.swing.JLabel etiquetaNombreProyecto;
     private javax.swing.JLabel etiqueta_Contenido;
     private javax.swing.JLabel etiqueta_HorasFinales;
@@ -394,38 +494,38 @@ public class VentanaVerStories extends javax.swing.JFrame implements WindowListe
     @Override
     public void windowOpened(WindowEvent we) {
     }
-    
+
     @Override
     public void windowClosing(WindowEvent we) {
         volver();
     }
-    
+
     @Override
     public void windowClosed(WindowEvent we) {
         volver();
     }
-    
+
     @Override
     public void windowIconified(WindowEvent we) {
     }
-    
+
     @Override
     public void windowDeiconified(WindowEvent we) {
     }
-    
+
     @Override
     public void windowActivated(WindowEvent we) {
     }
-    
+
     @Override
     public void windowDeactivated(WindowEvent we) {
     }
-    
+
     private void volver() {
         this.dispose();
         VENTANA_PROYECTOS.setVisible(true);
     }
-    
+
     private void rellenaTabla() {
         HashSet<Story> listaStories = p.getListaStories();
         String filaTabla[] = new String[6];
@@ -457,11 +557,11 @@ public class VentanaVerStories extends javax.swing.JFrame implements WindowListe
             modeloTablaStories.addRow(filaTabla);
         }
     }
-    
+
     private void limpiaTabla() {
         modeloTablaStories.setRowCount(0);
     }
-    
+
     private void setPanelModificaStory(boolean b) {
         etiqueta_Titulo.setEnabled(b);
         campoTitulo.setEnabled(b);
@@ -479,7 +579,7 @@ public class VentanaVerStories extends javax.swing.JFrame implements WindowListe
         botonCancelaCambios.setVisible(b);
         botonConfirmaAniadirModificarStory.setText("Modifica Story");
     }
-    
+
     private void setPanelAniadeStory(boolean b) {
         etiqueta_Titulo.setEnabled(b);
         campoTitulo.setEnabled(b);
@@ -487,24 +587,24 @@ public class VentanaVerStories extends javax.swing.JFrame implements WindowListe
         campoContenido.setEnabled(b);
         etiqueta_horasEstimadas.setEnabled(b);
         campoHorasEstimadas.setEnabled(b);
-        
+
         etiqueta_HorasFinales.setVisible(b);
         campoHorasFinales.setVisible(b);
         etiqueta_MiembroA.setEnabled(b);
         comboMiembroA.setEnabled(b);
         etiqueta_MiembroB.setEnabled(b);
         comboMiembroB.setEnabled(b);
-        
+
         botonConfirmaAniadirModificarStory.setVisible(b);
         botonCancelaCambios.setVisible(b);
         botonConfirmaAniadirModificarStory.setText("Añade Story");
     }
-    
+
     private void setBotonesPrincipales(boolean b) {
         botonAniadeStory.setEnabled(b);
         botonModificaStory.setEnabled(b);
     }
-    
+
     @Override
     public void valueChanged(ListSelectionEvent lse) {
         if (modoAniadir == false) {
@@ -519,10 +619,10 @@ public class VentanaVerStories extends javax.swing.JFrame implements WindowListe
             } else {
                 System.out.println("Story es null");
             }
-            
+
         }
     }
-    
+
     private void rellenaCombos() {
         HashSet<MiembroEquipo> listadoMiembros = GestoraEquipo.getLista();
         for (MiembroEquipo m : listadoMiembros) {
@@ -530,7 +630,7 @@ public class VentanaVerStories extends javax.swing.JFrame implements WindowListe
             modeloComboB.addElement(m);
         }
     }
-    
+
     private Story seleccionaStory() {
         try {
             int fila = tablaStories.getSelectedRow();
@@ -545,7 +645,7 @@ public class VentanaVerStories extends javax.swing.JFrame implements WindowListe
         }
         return null;
     }
-    
+
     private void limpiaFormulario() {
         campoContenido.setText("");
         campoHorasEstimadas.setText("");
@@ -554,5 +654,5 @@ public class VentanaVerStories extends javax.swing.JFrame implements WindowListe
         comboMiembroA.setSelectedIndex(0);
         comboMiembroB.setSelectedIndex(0);
     }
-    
+
 }
