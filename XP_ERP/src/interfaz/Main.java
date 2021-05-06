@@ -5,6 +5,7 @@ import gestoras.GestoraEquipo;
 import gestoras.GestoraProyecto;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import modelo.MiembroEquipo;
@@ -17,6 +18,8 @@ import modelo.Story;
  */
 public class Main extends javax.swing.JFrame implements WindowListener {
 
+    MiembroEquipo mE;
+    
     /**
      * Creates new form Main
      */
@@ -25,7 +28,7 @@ public class Main extends javax.swing.JFrame implements WindowListener {
         initComponents();
         inicializa();
         estadoInicial();
-        estadoInicialPruebas();//BORRAR//Método para navegar a las otras ventanas sin loguearse que usaremos durante las pruebas
+        //estadoInicialPruebas();//BORRAR//Método para navegar a las otras ventanas sin loguearse que usaremos durante las pruebas
         rellenaConDatos();
     }
 
@@ -52,6 +55,7 @@ public class Main extends javax.swing.JFrame implements WindowListener {
         botonAlta = new javax.swing.JButton();
         botonCrearPro = new javax.swing.JButton();
         botonVerPro = new javax.swing.JButton();
+        botonCierreSesion = new javax.swing.JButton();
         separador = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -184,16 +188,28 @@ public class Main extends javax.swing.JFrame implements WindowListener {
             }
         });
 
+        botonCierreSesion.setText("CERRAR SESION");
+        botonCierreSesion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonCierreSesionActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout contenedorMenuLayout = new javax.swing.GroupLayout(contenedorMenu);
         contenedorMenu.setLayout(contenedorMenuLayout);
         contenedorMenuLayout.setHorizontalGroup(
             contenedorMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(contenedorMenuLayout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addGroup(contenedorMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(botonCrearPro, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botonVerPro, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botonAlta, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(contenedorMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(contenedorMenuLayout.createSequentialGroup()
+                        .addGap(32, 32, 32)
+                        .addGroup(contenedorMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(botonCrearPro, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(botonVerPro, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(botonAlta, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(contenedorMenuLayout.createSequentialGroup()
+                        .addGap(53, 53, 53)
+                        .addComponent(botonCierreSesion)))
                 .addContainerGap(79, Short.MAX_VALUE))
         );
         contenedorMenuLayout.setVerticalGroup(
@@ -205,6 +221,8 @@ public class Main extends javax.swing.JFrame implements WindowListener {
                 .addComponent(botonCrearPro, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(botonVerPro, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(botonCierreSesion)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -261,7 +279,20 @@ public class Main extends javax.swing.JFrame implements WindowListener {
 
     private void botonLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonLoginActionPerformed
         // TODO add your handling code here:
-        estadoMenu();
+        String nick = textoNombre.getText();
+        String passw = textoPassw.getText();
+        
+        if(GestoraEquipo.loguearMiembro(nick, passw)){
+            JOptionPane.showMessageDialog(this,
+                    "Verificación completada. Buenos días " + nick.toUpperCase(),
+                    "LOGGING CORRECTO", JOptionPane.INFORMATION_MESSAGE);
+            estadoMenu();
+        }else{
+            JOptionPane.showMessageDialog(this,
+                    "El usuario o la contraseña no son correctos",
+                    "ERROR DE LOGGING", JOptionPane.ERROR_MESSAGE);
+            textoPassw.setText("");
+        }
     }//GEN-LAST:event_botonLoginActionPerformed
 
     private void botonAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAltaActionPerformed
@@ -288,10 +319,17 @@ public class Main extends javax.swing.JFrame implements WindowListener {
         // TODO add your handling code here:
     }//GEN-LAST:event_textoNombreActionPerformed
 
+    private void botonCierreSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCierreSesionActionPerformed
+        // TODO add your handling code here:
+        estadoInicial();
+    }//GEN-LAST:event_botonCierreSesionActionPerformed
+
     public void estadoInicial() {
         textoNombre.setEnabled(true);
         textoPassw.setEnabled(true);
         botonLogin.setEnabled(true);
+        textoNombre.setText("");
+        textoPassw.setText("");
 
         botonAlta.setEnabled(false);
         botonCrearPro.setEnabled(false);
@@ -334,6 +372,7 @@ public class Main extends javax.swing.JFrame implements WindowListener {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonAlta;
+    private javax.swing.JButton botonCierreSesion;
     private javax.swing.JButton botonCrearPro;
     private javax.swing.JButton botonLogin;
     private javax.swing.JButton botonVerPro;
