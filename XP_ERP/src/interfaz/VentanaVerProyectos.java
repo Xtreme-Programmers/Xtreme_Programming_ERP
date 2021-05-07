@@ -20,6 +20,7 @@ public class VentanaVerProyectos extends javax.swing.JFrame implements WindowLis
     private final Main VENTANA_MAIN;
     private DefaultTableModel modeloTablaEnCurso;
     private DefaultTableModel modeloTablaArchivado;
+    private VentanaCreaProyecto vC;
 
     /**
      * Creates new form VentanaVerProyectos
@@ -28,6 +29,7 @@ public class VentanaVerProyectos extends javax.swing.JFrame implements WindowLis
         this.addWindowListener(this);
         initComponents();
         this.VENTANA_MAIN = v;
+        vC = new VentanaCreaProyecto(VENTANA_MAIN);
         modeloListenerTablas();
         rellenaTablas();
     }
@@ -460,6 +462,8 @@ public class VentanaVerProyectos extends javax.swing.JFrame implements WindowLis
 
     private void botonNuevoProyectoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonNuevoProyectoActionPerformed
         // TODO add your handling code here:
+        this.dispose();
+        vC.setVisible(true);
     }//GEN-LAST:event_botonNuevoProyectoActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

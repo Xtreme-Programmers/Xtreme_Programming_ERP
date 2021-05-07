@@ -28,7 +28,7 @@ public class Main extends javax.swing.JFrame implements WindowListener {
         initComponents();
         inicializa();
         estadoInicial();
-        //estadoInicialPruebas();//BORRAR//Método para navegar a las otras ventanas sin loguearse que usaremos durante las pruebas
+        estadoInicialPruebas();//BORRAR//Método para navegar a las otras ventanas sin loguearse que usaremos durante las pruebas
         rellenaConDatos();
     }
 
