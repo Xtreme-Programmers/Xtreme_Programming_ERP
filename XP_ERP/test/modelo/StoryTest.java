@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package testing;
+package modelo;
 
 import excepciones.MyException;
 import modelo.MiembroEquipo;
@@ -20,26 +20,25 @@ import static org.junit.Assert.*;
  * @author Alumno
  */
 public class StoryTest {
-    
+
     private Story instance;
-    
+
     public StoryTest() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() throws MyException {
-        instance = new Story("1234","1234", "1234");
-        //modelo.Proyecto.CLASERECEPTORA(instance);
+        instance = new Story("1234", "1234", "1234");
     }
-    
+
     @After
     public void tearDown() {
     }
@@ -50,22 +49,26 @@ public class StoryTest {
     @Test
     public void testGetTitulo() {
         System.out.println("getTitulo");
-        String expResult = "";
+        String expResult = "1234";
         String result = instance.getTitulo();
-        assertNotEquals(expResult, result);
-        //fail("¡¡¡La historia no recibió o carece de titulo!!!");
+        assertEquals(expResult, result);
+        assertNotEquals(null, result);
+        assertNotEquals("", result);
     }
 
     /**
      * Test of setTitulo method, of class Story.
+     *
      * @throws java.lang.Exception
      */
     @Test
     public void testSetTitulo() throws Exception {
         System.out.println("setTitulo");
-        String titulo = "";
+        String titulo = "JAIME EL BANCO";
         instance.setTitulo(titulo);
-        //fail("¡¡¡Fracaso al establecer un titulo a la historia!!!");
+        assertEquals(titulo, instance.getTitulo());
+        assertNotEquals(null, instance.getTitulo());
+        assertNotEquals("", instance.getTitulo());
     }
 
     /**
@@ -76,12 +79,12 @@ public class StoryTest {
         System.out.println("getIdStory");
         int expResult = 0;
         int result = instance.getIdStory();
-        assertNotEquals(expResult, result);
-        //fail("¡¡¡La historia no recibió, carece de ID o no es valida!!!");
+        assertEquals(expResult, result);
     }
 
     /**
      * Test of setIdStory method, of class Story.
+     *
      * @throws java.lang.Exception
      */
     @Test
@@ -89,7 +92,7 @@ public class StoryTest {
         System.out.println("setIdStory");
         int idStory = 0;
         instance.setIdStory(idStory);
-        //fail("¡¡¡Fracaso al establecer ID a la historia!!!");
+        assertEquals(idStory, instance.getIdStory());
     }
 
     /**
@@ -98,25 +101,22 @@ public class StoryTest {
     @Test
     public void testGetMiembroA() {
         System.out.println("getMiembroA");
-        Story instance = null;
         MiembroEquipo expResult = null;
         MiembroEquipo result = instance.getMiembroA();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
      * Test of setMiembroEquipo method, of class Story.
+     *
+     * @throws excepciones.MyException
      */
     @Test
-    public void testSetMiembroEquipo() {
+    public void testSetMiembroEquipo() throws MyException {
         System.out.println("setMiembroEquipo");
-        MiembroEquipo miembroA = null;
-        MiembroEquipo miembroB = null;
+        MiembroEquipo miembroA = new MiembroEquipo("1234","1234");
+        MiembroEquipo miembroB = new MiembroEquipo("4321","4321");
         instance.setMiembroEquipo(miembroA, miembroB);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -125,12 +125,9 @@ public class StoryTest {
     @Test
     public void testGetMiembroB() {
         System.out.println("getMiembroB");
-        Story instance = null;
         MiembroEquipo expResult = null;
         MiembroEquipo result = instance.getMiembroB();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -139,38 +136,35 @@ public class StoryTest {
     @Test
     public void testGetHorasEstimadas() {
         System.out.println("getHorasEstimadas");
-        Story instance = null;
-        int expResult = 0;
+        int expResult = 1234;
         int result = instance.getHorasEstimadas();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
      * Test of setHorasEstimadas method, of class Story.
+     *
+     * @throws java.lang.Exception
      */
     @Test
-    public void testSetHorasEstimadas_String() throws Exception {
+    public void testSetHorasEstimadasString() throws Exception {
         System.out.println("setHorasEstimadas");
-        String horasEstimadas = "";
-        Story instance = null;
+        String horasEstimadas = "1234";
         instance.setHorasEstimadas(horasEstimadas);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(Integer.parseInt(horasEstimadas), instance.getHorasEstimadas());
     }
 
     /**
      * Test of setHorasEstimadas method, of class Story.
+     *
+     * @throws java.lang.Exception
      */
     @Test
-    public void testSetHorasEstimadas_int() throws Exception {
+    public void testSetHorasEstimadasInt() throws Exception {
         System.out.println("setHorasEstimadas");
         int horasEstimadas = 0;
-        Story instance = null;
         instance.setHorasEstimadas(horasEstimadas);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(horasEstimadas, instance.getHorasEstimadas());
     }
 
     /**
@@ -179,25 +173,22 @@ public class StoryTest {
     @Test
     public void testGetHorasFinales() {
         System.out.println("getHorasFinales");
-        Story instance = null;
         int expResult = 0;
         int result = instance.getHorasFinales();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
      * Test of setHorasFinales method, of class Story.
+     *
+     * @throws java.lang.Exception
      */
     @Test
     public void testSetHorasFinales() throws Exception {
         System.out.println("setHorasFinales");
         int horasFinales = 0;
-        Story instance = null;
         instance.setHorasFinales(horasFinales);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(horasFinales, instance.getHorasFinales());
     }
 
     /**
@@ -206,39 +197,24 @@ public class StoryTest {
     @Test
     public void testGetContenido() {
         System.out.println("getContenido");
-        Story instance = null;
-        String expResult = "";
+        String expResult = "1234";
         String result = instance.getContenido();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
      * Test of setContenido method, of class Story.
+     *
+     * @throws java.lang.Exception
      */
     @Test
     public void testSetContenido() throws Exception {
         System.out.println("setContenido");
-        String contenido = "";
-        Story instance = null;
+        String contenido = "1234";
         instance.setContenido(contenido);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of toString method, of class Story.
-     */
-    @Test
-    public void testToString() {
-        System.out.println("toString");
-        Story instance = null;
-        String expResult = "";
-        String result = instance.toString();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(contenido, instance.getContenido());
+        assertNotEquals("", instance.getContenido());
+        assertNotEquals(null, instance.getContenido());
     }
 
     /**
@@ -247,27 +223,8 @@ public class StoryTest {
     @Test
     public void testHashCode() {
         System.out.println("hashCode");
-        Story instance = null;
         int expResult = 0;
         int result = instance.hashCode();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertNotEquals(expResult, result);
     }
-
-    /**
-     * Test of equals method, of class Story.
-     */
-    @Test
-    public void testEquals() {
-        System.out.println("equals");
-        Object obj = null;
-        Story instance = null;
-        boolean expResult = false;
-        boolean result = instance.equals(obj);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-    
 }
