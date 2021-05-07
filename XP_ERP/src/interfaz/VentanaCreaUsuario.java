@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package interfaz;
 
 import excepciones.MyException;
@@ -10,8 +5,6 @@ import gestoras.GestoraEquipo;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import modelo.MiembroEquipo;
 
@@ -55,14 +48,20 @@ public class VentanaCreaUsuario extends javax.swing.JFrame implements WindowList
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
-        etiquetaLogo.setText("NOMBRE MOLON");
+        contenedor.setBackground(new java.awt.Color(255, 255, 255));
+
+        contenedorLogo.setBackground(new java.awt.Color(255, 255, 255));
+
+        etiquetaLogo.setBackground(new java.awt.Color(255, 255, 255));
+        etiquetaLogo.setFont(new java.awt.Font("Trebuchet MS", 1, 48)); // NOI18N
+        etiquetaLogo.setText("NOMBRE MOLÓN");
 
         javax.swing.GroupLayout contenedorLogoLayout = new javax.swing.GroupLayout(contenedorLogo);
         contenedorLogo.setLayout(contenedorLogoLayout);
         contenedorLogoLayout.setHorizontalGroup(
             contenedorLogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(contenedorLogoLayout.createSequentialGroup()
-                .addGap(158, 158, 158)
+                .addGap(127, 127, 127)
                 .addComponent(etiquetaLogo)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -71,15 +70,22 @@ public class VentanaCreaUsuario extends javax.swing.JFrame implements WindowList
             .addGroup(contenedorLogoLayout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addComponent(etiquetaLogo)
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        contenedorBotones.setBackground(new java.awt.Color(255, 255, 255));
+
+        etiquetaNombre.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         etiquetaNombre.setText("Nombre:");
 
+        etiquetaPassw.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         etiquetaPassw.setText("Contraseña:");
 
+        etiquetaRepPassw.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         etiquetaRepPassw.setText("Repetir contraseña:");
 
+        botonVolver.setBackground(new java.awt.Color(0, 0, 0));
+        botonVolver.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
         botonVolver.setText("VOLVER");
         botonVolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -87,6 +93,8 @@ public class VentanaCreaUsuario extends javax.swing.JFrame implements WindowList
             }
         });
 
+        botonAlta.setBackground(new java.awt.Color(0, 0, 0));
+        botonAlta.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
         botonAlta.setText("CREAR USUARIO");
         botonAlta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -94,18 +102,21 @@ public class VentanaCreaUsuario extends javax.swing.JFrame implements WindowList
             }
         });
 
+        textoNombre.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         textoNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textoNombreActionPerformed(evt);
             }
         });
 
+        textoPassw.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         textoPassw.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textoPasswActionPerformed(evt);
             }
         });
 
+        textoRepPassw.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         textoRepPassw.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textoRepPasswActionPerformed(evt);
@@ -119,21 +130,20 @@ public class VentanaCreaUsuario extends javax.swing.JFrame implements WindowList
             .addGroup(contenedorBotonesLayout.createSequentialGroup()
                 .addGap(17, 17, 17)
                 .addGroup(contenedorBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(botonVolver)
                     .addComponent(etiquetaRepPassw)
                     .addComponent(etiquetaNombre)
                     .addComponent(etiquetaPassw))
                 .addGap(58, 58, 58)
-                .addGroup(contenedorBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(contenedorBotonesLayout.createSequentialGroup()
-                        .addGroup(contenedorBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(textoPassw, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(textoNombre, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(textoRepPassw, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE))
-                        .addGap(89, 89, 89))
-                    .addGroup(contenedorBotonesLayout.createSequentialGroup()
-                        .addComponent(botonAlta, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addGroup(contenedorBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(botonAlta, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(textoPassw, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 336, Short.MAX_VALUE)
+                    .addComponent(textoNombre, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(textoRepPassw))
+                .addGap(89, 89, 89))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, contenedorBotonesLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(botonVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         contenedorBotonesLayout.setVerticalGroup(
             contenedorBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -150,11 +160,11 @@ public class VentanaCreaUsuario extends javax.swing.JFrame implements WindowList
                 .addGroup(contenedorBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(etiquetaRepPassw)
                     .addComponent(textoRepPassw, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
-                .addGroup(contenedorBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(botonVolver)
-                    .addComponent(botonAlta))
-                .addGap(42, 42, 42))
+                .addGap(18, 18, 18)
+                .addComponent(botonAlta, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
+                .addComponent(botonVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(36, 36, 36))
         );
 
         javax.swing.GroupLayout contenedorLayout = new javax.swing.GroupLayout(contenedor);
