@@ -19,13 +19,14 @@ import modelo.Story;
 public class Main extends javax.swing.JFrame implements WindowListener {
 
     MiembroEquipo mE;
-    
+
     /**
      * Creates new form Main
      */
     public Main() {
         this.addWindowListener(this);
         initComponents();
+        desactivarBotones();
         inicializa();
         estadoInicial();
         //estadoInicialPruebas();//BORRAR//Método para navegar a las otras ventanas sin loguearse que usaremos durante las pruebas
@@ -105,6 +106,11 @@ public class Main extends javax.swing.JFrame implements WindowListener {
         });
 
         textoPassw.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        textoPassw.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textoPasswActionPerformed(evt);
+            }
+        });
 
         botonLogin.setBackground(new java.awt.Color(0, 0, 0));
         botonLogin.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
@@ -281,13 +287,18 @@ public class Main extends javax.swing.JFrame implements WindowListener {
         // TODO add your handling code here:
         String nick = textoNombre.getText();
         String passw = textoPassw.getText();
-        
-        if(GestoraEquipo.loguearMiembro(nick, passw)){
-            JOptionPane.showMessageDialog(this,
-                    "Verificación completada. Buenos días " + nick.toUpperCase(),
-                    "LOGGING CORRECTO", JOptionPane.INFORMATION_MESSAGE);
-            estadoMenu();
-        }else{
+        MiembroEquipo e = GestoraEquipo.loguearMiembro(nick, passw);
+        if (e != null) {
+            if (e.isAdmin()) {
+                JOptionPane.showMessageDialog(this, "Bienvenido Jefe");
+                activarBotonesAdmin();
+            } else {
+                JOptionPane.showMessageDialog(this,
+                        "Verificación completada. Buenos días " + nick.toUpperCase(),
+                        "LOGGING CORRECTO", JOptionPane.INFORMATION_MESSAGE);
+                estadoMenu();
+            }
+        } else {
             JOptionPane.showMessageDialog(this,
                     "El usuario o la contraseña no son correctos",
                     "ERROR DE LOGGING", JOptionPane.ERROR_MESSAGE);
@@ -324,6 +335,10 @@ public class Main extends javax.swing.JFrame implements WindowListener {
         estadoInicial();
     }//GEN-LAST:event_botonCierreSesionActionPerformed
 
+    private void textoPasswActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textoPasswActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textoPasswActionPerformed
+
     public void estadoInicial() {
         textoNombre.setEnabled(true);
         textoPassw.setEnabled(true);
@@ -341,9 +356,7 @@ public class Main extends javax.swing.JFrame implements WindowListener {
         textoNombre.setEnabled(false);
         textoPassw.setEnabled(false);
         botonLogin.setEnabled(false);
-
-        botonAlta.setEnabled(true);
-        botonCrearPro.setEnabled(true);
+        
         botonVerPro.setEnabled(true);
     }
 
@@ -539,5 +552,15 @@ public class Main extends javax.swing.JFrame implements WindowListener {
         } catch (MyException ex) {
             Consola.muestraMensaje(ex.getMessage());
         }
+    }
+
+    private void desactivarBotones() {
+        botonCrearPro.setEnabled(false);
+        botonAlta.setEnabled(false);
+    }
+
+    private void activarBotonesAdmin() {
+        botonCrearPro.setEnabled(true);
+        botonAlta.setEnabled(true);
     }
 }

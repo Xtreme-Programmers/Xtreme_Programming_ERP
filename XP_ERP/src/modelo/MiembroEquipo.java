@@ -120,4 +120,12 @@ public class MiembroEquipo {
         return "MiembroEquipo ID = " + idMiembro;
     }
 
+    public  boolean isAdmin() {
+        for (String r : rolesMiembros) {
+            if (r.equals("Manager")) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

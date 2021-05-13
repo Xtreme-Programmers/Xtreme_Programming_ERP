@@ -15,7 +15,7 @@ public class GestoraEquipo {
     public static boolean addMiembro(MiembroEquipo mE) {
         return listadoMiembros.add(mE);
     }
-    
+
     public static void inicializa() {
         listadoMiembros = new HashSet<>();
     }
@@ -37,16 +37,18 @@ public class GestoraEquipo {
         return false;
     }
 
-    public static boolean loguearMiembro(String nick, String password) {
+    public static MiembroEquipo loguearMiembro(String nick, String password) {
         Iterator it = listadoMiembros.iterator();
         while (it.hasNext()) {
             MiembroEquipo next = (MiembroEquipo) it.next();
             if (next.getIdMiembro().equalsIgnoreCase(nick) && next.getPass().equals(password)) {
-                return true;
+                return next;
             }
         }
-        return false;
+        return null;
     }
+
+    
 
     public static HashSet<MiembroEquipo> getLista() {
         return listadoMiembros;
